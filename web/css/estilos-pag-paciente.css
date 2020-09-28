@@ -1,0 +1,13 @@
+.form-paciente{
+  text-align: center;
+}
+
+input-generales{
+    box-sizing: border-box;
+    size: auto ;
+}
+
+.centrar{
+    position: relative;
+    text-align: center;
+}
