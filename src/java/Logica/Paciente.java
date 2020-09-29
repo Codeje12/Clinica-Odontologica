@@ -16,6 +16,7 @@ public class Paciente extends Persona implements Serializable {
     boolean tutor;
     String contactoTutor;
     boolean obraSocial;
+    Turno turno;
 
     public Paciente() {
     }

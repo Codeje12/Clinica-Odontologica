@@ -1,14 +1,24 @@
 package Logica;
 
+import javax.persistence.Basic;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Persona {
+
+    @Id
+    String dni;
+    @Basic
     String nombre;
     String apellido;
-    String dni;
     String edad;
-    
-    public Persona(){
+
+    public Persona() {
     }
-    
+
     public Persona(String nombre, String apellido, String dni, String edad) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -48,8 +58,4 @@ public class Persona {
         this.edad = edad;
     }
 
-    
-    
-    
-    
 }

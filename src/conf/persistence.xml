@@ -3,6 +3,10 @@
   <persistence-unit name="ClinicaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Logica.Paciente</class>
+    <class>Logica.Turno</class>
+    <class>Logica.Usuario</class>
+    <class>Logica.Odontologo</class>
+    <class>Logica.Secretaria</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica?zeroDateTimeBehavior=convertToNull"/>

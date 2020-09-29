@@ -1,8 +1,17 @@
 package Logica;
 
-public class Secretaria extends Persona {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+
+@Entity
+public class Secretaria extends Persona implements Serializable {
+    
+    @Id
     private int id_Secretaria;
+    @OneToOne
     private Usuario usuario;
 
     public Secretaria() {

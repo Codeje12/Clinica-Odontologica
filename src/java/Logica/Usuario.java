@@ -1,8 +1,13 @@
-
 package Logica;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Usuario {
+@Entity
+public class Usuario implements Serializable {
+
+    @Id
     private int id_Usuario;
     private String usuario;
     private String pass;
@@ -39,5 +44,5 @@ public class Usuario {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
+
 }

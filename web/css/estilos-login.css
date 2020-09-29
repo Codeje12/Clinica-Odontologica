@@ -29,13 +29,13 @@ select{
 
 .input-password{
     size: 18px;
-    font-size: 18px;/*Dimension de la letra*/
+    font-size: 18px;/*PARA INDICAR EL TAMAÑO DE LA FUENTE/LETRAS*/
     width: 400px;
     max-width: 100%; 
     box-sizing: border-box;
-    border-top-right-radius: 10px ;/*   Libro:Css Avanzado; Autor:Javier Eguíluz Pérez; Pagina 27     */
-    border-top-left-radius: 10px ;/*Atributos para que las esquinas sean redondas*/
-    border-bottom-left-radius: 10px;/*arriba y abajo instrucciones diferentes*/
+    border-top-right-radius: 10px ; /* Css Avanzado; Autor:Javier Eguíluz Pérez; Pagina 27     */
+    border-top-left-radius: 10px ;  /*Atributos para que las esquinas sean redondas*/
+    border-bottom-left-radius: 10px;    /*arriba y abajo instrucciones diferentes*/
     border-bottom-right-radius: 10px;
 }
 

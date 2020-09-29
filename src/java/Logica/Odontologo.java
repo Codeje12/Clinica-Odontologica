@@ -1,12 +1,20 @@
-
 package Logica;
 
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-public class Odontologo extends Persona {
-    
+@Entity
+public class Odontologo extends Persona implements Serializable {
+
+    @Id
     private int id_Odontologo;
+    @Basic
     private String especialidad;
     private String horarioTrabajo;
+   @OneToOne
     private Usuario usuario;
 
     public Odontologo(int id_Odontologo, String especialidad, String horarioTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
@@ -88,6 +96,5 @@ public class Odontologo extends Persona {
     public void setEdad(String edad) {
         this.edad = edad;
     }
-    
-    
+
 }
