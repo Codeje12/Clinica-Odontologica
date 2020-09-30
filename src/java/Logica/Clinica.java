@@ -22,26 +22,33 @@ public class Clinica {
             pac.setContactoTutor(contacto);
 
             persistencia.crearPaciente(pac);
-            
+
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
-            
+
         }
 
     }
-    
-    public String redirigirUsuario(String usuario){
-        String aviso = "index.jsp";
-        if(!(usuario.equals("Odontologo") && usuario.equals("Secretaria"))) {
-            switch(usuario){
-                case "Odonotolo":
-                    return "pagina-Odontolo.jsp";
-                case "Secretaria":
-                    return "carga-pacientes.jsp" ;
-                default:
-                    return aviso;
-            }
+    String pagina;
+
+    public String redirigirUsuario(String usuario) {
+        switch (usuario) {
+            case "Odontologo":
+                pagina = "pagina-Odontologo.jsp";
+                //return pagina;
+                break;
+            case "Secretaria":
+                pagina = "carga-Pacientes.jsp";
+                //return pagina;
+                break;
+            default:
+                pagina = "index.jsp";
+                break;
         }
-        return null;
+        return pagina;
+    }
+
+    public void buscarUsuario(String usuario) {
+
     }
 }

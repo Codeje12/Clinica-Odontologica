@@ -1,4 +1,4 @@
 function campos(nomCampo){
-    alert('el campo ' +nomCampo +' no puede quedar vacio');
+    alert('Seleccione un usuario válido ! ');
 }
 //onFocus-onChangue-onBlur-onKeyPress-onKeyUp
