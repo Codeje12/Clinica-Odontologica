@@ -1,21 +1,23 @@
 package Logica;
 
-import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Odontologo extends Persona implements Serializable {
+public class Odontologo extends Persona  {
 
     @Id
-    private int id_Odontologo;
+    int id_Odontologo;
     @Basic
-    private String especialidad;
-    private String horarioTrabajo;
+     String especialidad;
+     String horarioTrabajo;
    @OneToOne
-    private Usuario usuario;
+     Usuario usuario;
+   
+   public Odontologo(){
+   }
 
     public Odontologo(int id_Odontologo, String especialidad, String horarioTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
         super(nombre, apellido, dni, edad);

@@ -1,6 +1,7 @@
 package Logica;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -8,6 +9,7 @@ import javax.persistence.OneToOne;
 public class Turno implements Serializable {
     @Id
     private int id_Turno;
+    @Basic
     private String dia;
     private String hora;
     private String tratamiento;

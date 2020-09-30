@@ -11,7 +11,6 @@ public class Persona {
 
     @Id
     String dni;
-    @Basic
     String nombre;
     String apellido;
     String edad;

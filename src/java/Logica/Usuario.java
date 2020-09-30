@@ -1,6 +1,7 @@
 package Logica;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -9,6 +10,7 @@ public class Usuario implements Serializable {
 
     @Id
     private int id_Usuario;
+    @Basic
     private String usuario;
     private String pass;
 

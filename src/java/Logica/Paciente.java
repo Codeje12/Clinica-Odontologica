@@ -1,27 +1,27 @@
 package Logica;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Paciente extends Persona implements Serializable {
+public class Paciente extends Persona  {
 
     @Id
     int id_Paciente;
-    @Basic
     String sexo;
     String direccion;
     boolean tutor;
     String contactoTutor;
     boolean obraSocial;
+    @OneToOne
     Turno turno;
 
+   
     public Paciente() {
     }
 
-    public Paciente(int id_Paciente, String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, String nombre, String apellido, String dni, String edad) {
+    public Paciente(int id_Paciente, String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, String nombre, String apellido, String dni, String edad,Turno tuno) {
         super(nombre, apellido, dni, edad);
         this.id_Paciente = id_Paciente;
         this.sexo = sexo;
@@ -29,6 +29,15 @@ public class Paciente extends Persona implements Serializable {
         this.tutor = tutor;
         this.contactoTutor = contactoTutor;
         this.obraSocial = obraSocial;
+        this.turno = turno;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 
     public int getId_Paciente() {

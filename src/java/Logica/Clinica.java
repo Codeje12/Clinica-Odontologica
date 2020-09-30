@@ -10,6 +10,7 @@ public class Clinica {
         Paciente pac = new Paciente();
 
         try {
+            pac.setId_Paciente(2);
             pac.setNombre(nombre);
             pac.setApellido(apellido);
             pac.setDni(dni);
