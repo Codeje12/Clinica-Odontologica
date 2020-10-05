@@ -1,4 +1,4 @@
-<div class="text-center">Copyright © Codeje Software| Todo los derechos reservados</div>
+
 
 <!-- Core Scripts - Include with every page -->
 <script src="assets/plugins/jquery-1.10.2.js"></script>

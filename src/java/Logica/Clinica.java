@@ -47,9 +47,12 @@ public class Clinica {
         }
         Usuario user = new Usuario();
         user = this.persistencia.accederLogin(id);
-
-        if (!(password == "" && password == null)) {
-            if (user.getUsuario().equals(usuario) && user.getPass().equals(password)) {
+        
+        if(usuario.equals("error")){
+            this.pagina = "index.jsp";
+        }
+        if (password != "" || password != null ) {
+            if(user.getUsuario().equals(usuario) && user.getPass().equals(password)) {
                 this.pagina = "inicio.jsp";
             }
         } else {

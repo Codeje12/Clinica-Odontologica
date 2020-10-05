@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -32,16 +33,18 @@
                             <form action="servletsLogin" role="form" class="login-form" method="POST">
                                 <p class="title-login text-center">Iniciar Sesion</p>
                                 <p>
-                                    <select class="select-login" name="usuario" >
-                                        <option value="">Seleccionar usuario</option>
-                                        <option value="Odontologo">Odont�logo</option>
-                                        <option value="Secretaria">Secretaria</option>
+                                    <select class="select-login text-center" name="usuario" >
+                                        <option value="error">Seleccionar usuario</option>
+                                        <option value="odontologo">Odontólogo</option>
+                                        <option value="secretaria">Secretaria</option>
                                     </select>
                                 </p>    
                                 <p><input name="password" class="input-password text-center" type="password" placeholder="Password"/></p>
                                 <p><input type="submit" class="btn-ingreso" value="Ingresar"></p>
                             </form>
-                            
+                            <div class="text-center">
+                                <h5><a href="recuperar-Password.jsp">¿Olvidaste tu contraseña?</a></h5>
+                            </div>
                             
                         </div>
                     </div>

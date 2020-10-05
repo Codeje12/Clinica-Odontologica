@@ -9,8 +9,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">
-                    <h1> Clinica </h1>
+                <a class="navbar-brand" href="inicio.jsp">
+                    <img src="assets/img/logo.png">
                 </a>
             </div>
             <!-- end navbar-header -->
@@ -19,7 +19,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-3x"></i>
+                        <i class="fa fa-user fa-3x"> Salir</i>
                     </a>
                     <!-- dropdown user-->
                     <ul class="dropdown-menu dropdown-user">

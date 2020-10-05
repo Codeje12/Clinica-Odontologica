@@ -23,14 +23,16 @@ public class servletsLogin extends HttpServlet {
 
         String usuario = request.getParameter("usuario");
         String password = request.getParameter("password");
-
+        
+        
+        //Hago una consulta a la sesion actual e introduzco los atributos
         request.getSession().setAttribute("usuario", usuario);
         request.getSession().setAttribute("password", password);
 
         Clinica control = new Clinica();
-        
-        //response.sendRedirect(control.verficacionAcceso(usuario,password));
-     response.sendRedirect("inicio.jsp");
+
+        response.sendRedirect(control.verficacionAcceso(usuario, password));
+        //response.sendRedirect("inicio.jsp");
     }
 
     @Override
