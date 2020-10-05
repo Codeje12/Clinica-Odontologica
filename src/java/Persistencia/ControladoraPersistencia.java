@@ -1,5 +1,7 @@
 package Persistencia;
+import static Logica.Odontologo_.usuario;
 import Logica.Paciente;
+import Logica.Usuario;
 
 public class ControladoraPersistencia {
     
@@ -18,5 +20,10 @@ public class ControladoraPersistencia {
         }
     }
     
+    
+     public Usuario accederLogin(int id){
+        Usuario usu = usuarioJpa.findUsuario(id);
+        return usu;
+    }
     
 }

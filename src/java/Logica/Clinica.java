@@ -29,26 +29,34 @@ public class Clinica {
         }
 
     }
+    
+    
     String pagina;
-
-    public String redirigirUsuario(String usuario) {
+    public String verficacionAcceso(String usuario, String password) {
+        int id;
         switch (usuario) {
-            case "Odontologo":
-                pagina = "pagina-Odontologo.jsp";
-                //return pagina;
+            case "odontologo":
+                id = 1;
                 break;
-            case "Secretaria":
-                pagina = "carga-Pacientes.jsp";
-                //return pagina;
+            case "secretaria":
+                id = 2;
                 break;
             default:
-                pagina = "index.jsp";
+                id = 0;
                 break;
+        }
+        Usuario user = new Usuario();
+        user = this.persistencia.accederLogin(id);
+
+        if (!(password == "" && password == null)) {
+            if (user.getUsuario().equals(usuario) && user.getPass().equals(password)) {
+                this.pagina = "inicio.jsp";
+            }
+        } else {
+            this.pagina = "index.jsp";
         }
         return pagina;
     }
 
-    public void buscarUsuario(String usuario) {
-
-    }
+    
 }

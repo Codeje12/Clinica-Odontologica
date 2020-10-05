@@ -25,13 +25,12 @@ public class servletsLogin extends HttpServlet {
         String password = request.getParameter("password");
 
         request.getSession().setAttribute("usuario", usuario);
-        
+        request.getSession().setAttribute("password", password);
+
         Clinica control = new Clinica();
-       
-        response.sendRedirect(control.redirigirUsuario(usuario));
-        //control.buscarUsuario(usuario);
         
-        
+        //response.sendRedirect(control.verficacionAcceso(usuario,password));
+     response.sendRedirect("inicio.jsp");
     }
 
     @Override
