@@ -1,6 +1,5 @@
 <%@include file="pantilla/documento-apertura.jsp" %>
 
-
 <div class="text-center">  
     <h1>Registro de turno</h1>
     <h3>Datos del Paciente</h3>
@@ -12,11 +11,10 @@
             <p><input class="input-password text-center" type="text" name="nombre" placeholder="Nombre " ></p>
             <p><input class="input-password text-center" type="text" name="apellido" placeholder="Apellido"></p>
             <p><input class="input-password text-center" type="text" name="dni" placeholder="Dni"></p>
-            
             <p><input class="input-password text-center" type="text" name="direcion" placeholder="Direccion"></p>
             <p><input class="input-password text-center" type="date" name="edad" placeholder="Fecha Nacimiento" ></p>
             <p><select class="select-login text-center" name="sexo">
-                    <option>Seleccionar sexo</option>
+                    <option>Seleccionar Genero</option>
                     <option value="femenino">Femenino</option>
                     <option value="Masculino" >Masculino</option>
                     <option value="Otro"> Otros</option>

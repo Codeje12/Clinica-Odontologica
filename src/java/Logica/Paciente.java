@@ -1,13 +1,16 @@
 package Logica;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Paciente extends Persona  {
+public class Paciente extends Persona {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_Paciente;
     String sexo;
     String direccion;
@@ -17,11 +20,10 @@ public class Paciente extends Persona  {
     @OneToOne
     Turno turno;
 
-   
     public Paciente() {
     }
 
-    public Paciente(int id_Paciente, String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, String nombre, String apellido, String dni, String edad,Turno tuno) {
+    public Paciente(int id_Paciente, String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, String nombre, String apellido, String dni, String edad, Turno tuno) {
         super(nombre, apellido, dni, edad);
         this.id_Paciente = id_Paciente;
         this.sexo = sexo;
@@ -127,8 +129,5 @@ public class Paciente extends Persona  {
     public void setEdad(String edad) {
         this.edad = edad;
     }
-    
-    
+
 }
-    
- 

@@ -37,7 +37,16 @@
                 <!-- second-level-items -->
             </li>
             <li>
-                <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas</a>
+                <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level text-center">
+                    <li>
+                        <a href="carga-Pacientes.jsp">Registrar Doctor</a>
+                    </li>
+                </ul>
+                <!-- second-level-items -->
+            </li>
+            <li>
+                
             </li>
             <li>
                 <a href="tables.html"><i class="fa fa-table fa-fw"></i>Secretarias</a>
