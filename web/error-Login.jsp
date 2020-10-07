@@ -28,26 +28,23 @@
                             <h3 class="panel-title text-center">cuenta</h3>
                         </div>
                         <div class="panel-body">
-                            
-                            
-                            <form action="servletsLogin" role="form" class="login-form" method="POST">
-                                <p class="title-login text-center">Iniciar Sesion</p>
-                                <p>
-                                    <select class="select-login text-center" name="usuario" >
-                                        <option value="error">Seleccionar usuario</option>
-                                        <option value="odontologo">Odontólogo</option>
-                                        <option value="secretaria">Secretaria</option>
-                                    </select>
-                                </p>    
-                                <p><input name="password" class="input-password text-center" type="password" placeholder="Password"/></p>
-                                <p><input type="submit" class="btn-ingreso" value="Ingresar"></p>
-                            </form>
-                            
-                            
+
+
                             <div class="text-center">
-                                <h5><a href="recuperar-Password.jsp">¿Olvidaste tu contraseña?</a></h5>
+                                <h1>Fallo el inicio de sesion</h1>
                             </div>
-                            
+
+                            <div class="text-center">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h3>Vuelva a intentarlo</h3>
+                                <a  href="index.jsp" ><button class="btn-ingreso" >Volver</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>

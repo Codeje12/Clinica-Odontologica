@@ -10,7 +10,7 @@
         <img src="assets/img/bienvenida.png">
     </div>
     <div>
-    <jsp:include page="pantilla/tablas-Turnos.jsp" /> 
-</div>
+        <jsp:include page="pantilla/tablas-Turnos.jsp" /> 
+    </div>
 </div>
 <%@include file="pantilla/documento-cierre.jsp"%>

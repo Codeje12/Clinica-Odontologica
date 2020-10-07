@@ -8,51 +8,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ServletsPaciente", urlPatterns = {"/ServletsPaciente"})
-public class ServletsPaciente extends HttpServlet {
+@WebServlet(name = "ServletsOdontologo", urlPatterns = {"/ServletsOdontologo"})
+public class ServletsOdontologo extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String dni = request.getParameter("dni");
-        String sexo = request.getParameter("sexo");
         String edad = request.getParameter("edad");
-        String direccion = request.getParameter("direccion");
-        boolean obra = Boolean.parseBoolean(request.getParameter("obra"));
-        boolean tutor = Boolean.parseBoolean(request.getParameter("tutor"));
-        String contacto = request.getParameter("contacto");
+        String especialidad = request.getParameter("especialidad");
+        String horarioTrabajo = request.getParameter("horarioTrabajo");
 
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
         request.getSession().setAttribute("nombre", nombre);
         request.getSession().setAttribute("apellido", apellido);
         request.getSession().setAttribute("dni", dni);
-        request.getSession().setAttribute("sexo", sexo);
         request.getSession().setAttribute("edad", edad);
-        request.getSession().setAttribute("direccion", direccion);
-        request.getSession().setAttribute("obra", obra);
-        request.getSession().setAttribute("tutor", tutor);
-        request.getSession().setAttribute("contacto", contacto);
+        request.getSession().setAttribute("especialidad", especialidad);
+        request.getSession().setAttribute("horarioTrabajo", horarioTrabajo);
+
         response.sendRedirect("carga-Correcta.jsp");
         Clinica control = new Clinica();
-        //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
-        // de la misma, en  donde estaran los abml del JPA
-        control.crearPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);
         
+        control.crearOdontologo(nombre,apellido,dni,edad,especialidad,horarioTrabajo);
         
-        
-
-        
-
     }
 
     @Override

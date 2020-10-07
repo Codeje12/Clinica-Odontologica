@@ -19,19 +19,13 @@
                 <a href="inicio.jsp"><i class="fa fa-home"></i>Inicio</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Turnos<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Pacientes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level text-center">
                     <li>
-                        <a href="carga-Pacientes.jsp">Nuevo turno</a>
+                        <a href="carga-Pacientes.jsp">Nuevo Paciente</a>
                     </li>
                     <li>
-                        <a href="morris.html">Modificar turno</a>
-                    </li>
-                    <li>
-                        <a href="morris.html">Eliminar turno</a>
-                    </li>
-                    <li>
-                        <a href="morris.html">Visualizar turno</a>
+                        <a href="tablas-Turnos.jsp">Lista Pacientes</a>
                     </li>
                 </ul>
                 <!-- second-level-items -->
@@ -40,10 +34,9 @@
                 <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level text-center">
                     <li>
-                        <a href="carga-Pacientes.jsp">Registrar Doctor</a>
+                        <a href="carga-Odontologos.jsp">Registrar Odontologo</a>
                     </li>
                 </ul>
-                <!-- second-level-items -->
             </li>
             <li>
                 
@@ -55,7 +48,5 @@
                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
             </li>
         </ul>
-   
     </div>
-   
 </nav>

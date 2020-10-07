@@ -89,5 +89,7 @@ public class Turno implements Serializable {
         this.costo = costo;
     }
 
-    
+    public void realizarTurno (Odontologo odont, Paciente pac){
+        
+    }
 }

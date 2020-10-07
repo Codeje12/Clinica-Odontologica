@@ -1,6 +1,5 @@
 package Logica;
 
-import javax.persistence.Basic;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
