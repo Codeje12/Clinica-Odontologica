@@ -17,7 +17,6 @@ public class Turno implements Serializable {
     @Basic
     private String dia;
     private String hora;
-    private String ampm;
     private String tratamiento;
     private String diagnostico;
     private Odontologo odontologo;
@@ -29,23 +28,14 @@ public class Turno implements Serializable {
     public Turno() {
     }
 
-    public Turno(int id_Turno, String dia, String hora,String ampm, String tratamiento, String diagnostico, Odontologo odontologo, double costo) {
+    public Turno(int id_Turno, String dia, String hora, String tratamiento, String diagnostico, Odontologo odontologo, double costo) {
         this.id_Turno = id_Turno;
         this.dia = dia;
         this.hora = hora;
-        this.ampm = ampm;
         this.tratamiento = tratamiento;
         this.diagnostico = diagnostico;
         this.odontologo = odontologo;
         this.costo = costo;
-    }
-
-    public String getAmpm() {
-        return ampm;
-    }
-
-    public void setAmpm(String ampm) {
-        this.ampm = ampm;
     }
 
     public Paciente getPacient() {

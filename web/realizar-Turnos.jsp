@@ -18,32 +18,28 @@
                     <option value="viernes" >Viernes</option>
                 </select></p>
 
-            <p class="col-md-3">
+            <p class="col-md-4">
             </p>
             <p class="col-md-4">
                 <select class="select-login text-center" name="hora">
                     <option value="error">Hora</option>
-                    <option value="1">1</option>
-                    <option value="2" >2</option>
-                    <option value="3" >3</option>
-                    <option value="4" >4</option>
-                    <option value="5" >5</option>
-                    <option value="6" >6</option>
                     <option value="7" >7</option>
                     <option value="8" >8</option>
                     <option value="9" >9</option>
                     <option value="10" >10</option>
                     <option value="11" >11</option>
                     <option value="12" >12</option>
+                    <option value="13">13</option>
+                    <option value="14" >14</option>
+                    <option value="15" >15</option>
+                    <option value="16" >16</option>
+                    <option value="17" >17</option>
+                    <option value="18" >18</option>
+                    <option value="19" >19</option>
+                    <option value="20" >20</option>
                 </select>
             </p>
-            <p class="col-md-3">
-                <select class="select-login text-center" name="ampm">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
-                </select>
-            </p>
-            <p class="col-md-3">
+            <p class="col-md-4">
             </p>
             <p><textarea class="input-password text-center" name="diagnostico" placeholder="Escriba el diagnostico del paciente" ></textarea></p>      
             <p><textarea class="input-password text-center" name="tratamiento" placeholder="Excriba el tratamiento que se realizará" ></textarea></p>      

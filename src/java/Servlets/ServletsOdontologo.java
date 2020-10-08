@@ -26,7 +26,8 @@ public class ServletsOdontologo extends HttpServlet {
         String dni = request.getParameter("dni");
         String edad = request.getParameter("edad");
         String especialidad = request.getParameter("especialidad");
-        String horarioTrabajo = request.getParameter("horarioTrabajo");
+        String horarioInicioTrabajo = request.getParameter("horarioInicioTrabajo");
+        String horarioFinTrabajo = request.getParameter("horarioFinTrabajo");
 
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
@@ -35,12 +36,13 @@ public class ServletsOdontologo extends HttpServlet {
         request.getSession().setAttribute("dni", dni);
         request.getSession().setAttribute("edad", edad);
         request.getSession().setAttribute("especialidad", especialidad);
-        request.getSession().setAttribute("horarioTrabajo", horarioTrabajo);
+        request.getSession().setAttribute("horarioInicioTrabajo", horarioInicioTrabajo);
+        request.getSession().setAttribute("horarioFinTrabajo", horarioFinTrabajo);
 
         response.sendRedirect("carga-Correcta.jsp");
         Clinica control = new Clinica();
         
-        control.crearOdontologo(nombre,apellido,dni,edad,especialidad,horarioTrabajo);
+        control.crearOdontologo(nombre,apellido,dni,edad,especialidad,horarioInicioTrabajo,horarioFinTrabajo);
         
     }
 

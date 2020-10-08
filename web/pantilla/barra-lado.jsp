@@ -25,7 +25,13 @@
                         <a href="carga-Pacientes.jsp">Nuevo Paciente</a>
                     </li>
                     <li>
-                        <a href="tablas-Turnos.jsp">Lista Pacientes</a>
+                        <a href="modificar-Pacientes.jsp">Modificar Paciente</a>
+                    </li>
+                    <li>
+                        <a href="tablas-Turnos.jsp">Eliminar Paciente</a>
+                    </li>
+                    <li>
+                        <a href="tablas-Turnos.jsp">Listar Pacientes</a>
                     </li>
                 </ul>
                 <!-- second-level-items -->

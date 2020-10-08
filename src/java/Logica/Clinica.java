@@ -65,18 +65,17 @@ public class Clinica {
         return pagina;
     }*/
 
-    public void crearOdontologo(String nombre, String apellido, String dni, String edad, String especialidad, String horarioTrabajo) {
+    public void crearOdontologo(String nombre,String apellido,String dni,String edad,String especialidad,String horarioInicioTrabajo,String horarioFinTrabajo) {
         Odontologo odon = new Odontologo();
-
         try {
-
             odon.setNombre(nombre);
             odon.setApellido(apellido);
             odon.setDni(dni);
             odon.setEdad(edad);
             odon.setEspecialidad(especialidad);
-            odon.setHorarioTrabajo(horarioTrabajo);
-
+            odon.setHorarioInicioTrabajo(horarioInicioTrabajo);
+            odon.setHorarioFinTrabajo(horarioFinTrabajo);
+            
             persistencia.crearOdontologo(odon);
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -96,12 +95,11 @@ public class Clinica {
         return permiso;
     }
 
-    public void crearTurno(String dia, String hora, String ampm, String tratamiento, String diagnostico, double costo) {
+    public void crearTurno(String dia, String hora, String tratamiento, String diagnostico, double costo) {
         Turno tur = new Turno();
         try {
             tur.setDia(dia);
             tur.setHora(hora);
-            tur.setAmpm(ampm);
             tur.setTratamiento(tratamiento);
             tur.setDiagnostico(diagnostico);
             tur.setCosto(costo);

@@ -48,7 +48,7 @@ public class ServletsPaciente extends HttpServlet {
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
         control.crearPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);
-        
+        //control.eliminarPaciente(dni);
         
         
 

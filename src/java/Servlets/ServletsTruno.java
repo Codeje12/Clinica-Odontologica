@@ -33,7 +33,6 @@ public class ServletsTruno extends HttpServlet {
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
         request.getSession().setAttribute("dia",dia);
         request.getSession().setAttribute("hora",hora);
-        request.getSession().setAttribute("ampm",ampm);
         request.getSession().setAttribute("tratamiento",tratamiento);
         request.getSession().setAttribute("diagnostico",diagnostico);
         request.getSession().setAttribute("costo", costo);
@@ -42,7 +41,7 @@ public class ServletsTruno extends HttpServlet {
         
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
-        control.crearTurno(dia,hora,ampm,tratamiento,diagnostico,costo);
+        control.crearTurno(dia,hora,tratamiento,diagnostico,costo);
     }
 
    

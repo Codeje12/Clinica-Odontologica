@@ -1,6 +1,5 @@
 package Logica;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,24 +8,41 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Odontologo extends Persona{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_Odontologo;
     String especialidad;
-    String horarioTrabajo;
+    String horarioInicioTrabajo;
+    String horarioFinTrabajo;
     @OneToOne
     Usuario usuario;
 
     public Odontologo() {
     }
 
-    public Odontologo(int id_Odontologo, String especialidad, String horarioTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
+    public Odontologo(int id_Odontologo, String especialidad, String horarioInicioTrabajo,String horarioFinTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
         super(nombre, apellido, dni, edad);
         this.id_Odontologo = id_Odontologo;
         this.especialidad = especialidad;
-        this.horarioTrabajo = horarioTrabajo;
+        this.horarioInicioTrabajo = horarioInicioTrabajo;
+        this.horarioFinTrabajo =horarioFinTrabajo;
         this.usuario = usuario;
+    }
+
+    public String getHorarioinicioTrabajo() {
+        return horarioInicioTrabajo;
+    }
+
+    public void setHorarioInicioTrabajo(String horarioInicioTrabajo) {
+        this.horarioInicioTrabajo = horarioInicioTrabajo;
+    }
+
+    public String getHorarioFinTrabajo() {
+        return horarioFinTrabajo;
+    }
+
+    public void setHorarioFinTrabajo(String horarioFinTrabajo) {
+        this.horarioFinTrabajo = horarioFinTrabajo;
     }
 
     public int getId_Odontologo() {
@@ -43,14 +59,6 @@ public class Odontologo extends Persona{
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
-    }
-
-    public String getHorarioTrabajo() {
-        return horarioTrabajo;
-    }
-
-    public void setHorarioTrabajo(String horarioTrabajo) {
-        this.horarioTrabajo = horarioTrabajo;
     }
 
     public Usuario getUsuario() {
