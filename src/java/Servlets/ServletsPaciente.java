@@ -44,6 +44,7 @@ public class ServletsPaciente extends HttpServlet {
         request.getSession().setAttribute("contacto", contacto);
         response.sendRedirect("carga-Correcta.jsp");
         Clinica control = new Clinica();
+        
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
         control.crearPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);

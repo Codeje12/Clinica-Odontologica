@@ -12,6 +12,8 @@
         <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
         <link href="assets/css/style.css" rel="stylesheet" />
         <link href="assets/css/main-style.css" rel="stylesheet" />
+        <script src="assets/scripts/controles-campos.js"></script>
+        <script src="assets/scripts/jquery.js"></script>
         <!-- Page-Level CSS -->
         <link href="assets/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
     </head>

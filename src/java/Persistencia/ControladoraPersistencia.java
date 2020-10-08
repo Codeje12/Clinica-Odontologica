@@ -3,6 +3,7 @@ package Persistencia;
 import Logica.Odontologo;
 import static Logica.Odontologo_.usuario;
 import Logica.Paciente;
+import Logica.Turno;
 import Logica.Usuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,6 +34,14 @@ public class ControladoraPersistencia {
     public void crearOdontologo(Odontologo odon) {
         try {
             this.odontologoJpa.create(odon);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void crearTurno(Turno tur) {
+        try {
+            turnoJpa.create(tur);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -2,22 +2,24 @@ package Logica;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Odontologo extends Persona  {
+public class Odontologo extends Persona{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id_Odontologo;
-    @Basic
-     String especialidad;
-     String horarioTrabajo;
-   @OneToOne
-     Usuario usuario;
-   
-   public Odontologo(){
-   }
+    String especialidad;
+    String horarioTrabajo;
+    @OneToOne
+    Usuario usuario;
+
+    public Odontologo() {
+    }
 
     public Odontologo(int id_Odontologo, String especialidad, String horarioTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
         super(nombre, apellido, dni, edad);
@@ -99,5 +101,4 @@ public class Odontologo extends Persona  {
         this.edad = edad;
     }
 
-   
 }

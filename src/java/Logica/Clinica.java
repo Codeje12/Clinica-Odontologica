@@ -96,4 +96,19 @@ public class Clinica {
         return permiso;
     }
 
+    public void crearTurno(String dia, String hora, String ampm, String tratamiento, String diagnostico, double costo) {
+        Turno tur = new Turno();
+        try {
+            tur.setDia(dia);
+            tur.setHora(hora);
+            tur.setAmpm(ampm);
+            tur.setTratamiento(tratamiento);
+            tur.setDiagnostico(diagnostico);
+            tur.setCosto(costo);
+            persistencia.crearTurno(tur);
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+    }
+
 }

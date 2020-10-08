@@ -31,10 +31,16 @@
                 <!-- second-level-items -->
             </li>
             <li>
+                <a href="realizar-Turnos.jsp"><i class="fa fa-edit fa-fw"></i>Trunos</a>
+            </li>
+            <li>
                 <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level text-center">
                     <li>
                         <a href="carga-Odontologos.jsp">Registrar Odontologo</a>
+                    </li>
+                    <li>
+                        <a href="carga-Odontologos.jsp">Listar Odontologos</a>
                     </li>
                 </ul>
             </li>
@@ -42,10 +48,10 @@
                 
             </li>
             <li>
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i>Secretarias</a>
+                <a href="pagina-Proceso.jsp"><i class="fa fa-table fa-fw"></i>Secretarias</a>
             </li>
             <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
+                <a href="pagina-Proceso.jsp"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
             </li>
         </ul>
     </div>
