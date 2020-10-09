@@ -36,7 +36,7 @@ public class OdontologoJpaController implements Serializable {
             em.persist(odontologo);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findOdontologo(odontologo.getId_Odontologo()) != null) {
+            if (findOdontologo(odontologo.getId()) != null) {
                 throw new PreexistingEntityException("Odontologo " + odontologo + " already exists.", ex);
             }
             throw ex;
@@ -57,7 +57,7 @@ public class OdontologoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = odontologo.getId_Odontologo();
+                int id = odontologo.getId();
                 if (findOdontologo(id) == null) {
                     throw new NonexistentEntityException("The odontologo with id " + id + " no longer exists.");
                 }
@@ -78,7 +78,7 @@ public class OdontologoJpaController implements Serializable {
             Odontologo odontologo;
             try {
                 odontologo = em.getReference(Odontologo.class, id);
-                odontologo.getId_Odontologo();
+                odontologo.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The odontologo with id " + id + " no longer exists.", enfe);
             }

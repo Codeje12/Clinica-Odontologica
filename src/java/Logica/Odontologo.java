@@ -1,16 +1,10 @@
 package Logica;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Odontologo extends Persona{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id_Odontologo;
     String especialidad;
     String horarioInicioTrabajo;
     String horarioFinTrabajo;
@@ -20,12 +14,10 @@ public class Odontologo extends Persona{
     public Odontologo() {
     }
 
-    public Odontologo(int id_Odontologo, String especialidad, String horarioInicioTrabajo,String horarioFinTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
-        super(nombre, apellido, dni, edad);
-        this.id_Odontologo = id_Odontologo;
+    public Odontologo(String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo, Usuario usuario) {
         this.especialidad = especialidad;
         this.horarioInicioTrabajo = horarioInicioTrabajo;
-        this.horarioFinTrabajo =horarioFinTrabajo;
+        this.horarioFinTrabajo = horarioFinTrabajo;
         this.usuario = usuario;
     }
 
@@ -45,12 +37,12 @@ public class Odontologo extends Persona{
         this.horarioFinTrabajo = horarioFinTrabajo;
     }
 
-    public int getId_Odontologo() {
-        return id_Odontologo;
+    public int getId() {
+        return id;
     }
 
-    public void setId_Odontologo(int id_Odontologo) {
-        this.id_Odontologo = id_Odontologo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEspecialidad() {

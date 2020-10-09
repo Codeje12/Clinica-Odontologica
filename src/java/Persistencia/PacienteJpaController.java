@@ -36,7 +36,7 @@ public class PacienteJpaController implements Serializable {
             em.persist(paciente);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findPaciente(paciente.getId_Paciente()) != null) {
+            if (findPaciente(paciente.getId()) != null) {
                 throw new PreexistingEntityException("Paciente " + paciente + " already exists.", ex);
             }
             throw ex;
@@ -57,7 +57,7 @@ public class PacienteJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = paciente.getId_Paciente();
+                int id = paciente.getId();
                 if (findPaciente(id) == null) {
                     throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.");
                 }
@@ -78,7 +78,7 @@ public class PacienteJpaController implements Serializable {
             Paciente paciente;
             try {
                 paciente = em.getReference(Paciente.class, id);
-                paciente.getId_Paciente();
+                paciente.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The paciente with id " + id + " no longer exists.", enfe);
             }

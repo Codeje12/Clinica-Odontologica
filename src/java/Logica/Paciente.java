@@ -1,5 +1,6 @@
 package Logica;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,10 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Paciente extends Persona {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id_Paciente;
+public class Paciente extends Persona  {
+    
     String sexo;
     String direccion;
     boolean tutor;
@@ -22,9 +21,8 @@ public class Paciente extends Persona {
     public Paciente() {
     }
 
-    public Paciente(int id_Paciente, String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, String nombre, String apellido, String dni, String edad, Turno tuno) {
+    public Paciente(String sexo, String direccion, boolean tutor, String contactoTutor, boolean obraSocial, Turno turno, String nombre, String apellido, String dni, String edad) {
         super(nombre, apellido, dni, edad);
-        this.id_Paciente = id_Paciente;
         this.sexo = sexo;
         this.direccion = direccion;
         this.tutor = tutor;
@@ -33,20 +31,22 @@ public class Paciente extends Persona {
         this.turno = turno;
     }
 
+   
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Turno getTurno() {
         return turno;
     }
 
     public void setTurno(Turno turno) {
         this.turno = turno;
-    }
-
-    public int getId_Paciente() {
-        return id_Paciente;
-    }
-
-    public void setId_Paciente(int id_Paciente) {
-        this.id_Paciente = id_Paciente;
     }
 
     public String getSexo() {

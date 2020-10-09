@@ -10,11 +10,8 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-public class Secretaria extends Persona implements Serializable {
+public class Secretaria extends Persona{
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Secretaria;
     @Basic
     String Horario;
     @OneToOne
@@ -23,18 +20,26 @@ public class Secretaria extends Persona implements Serializable {
     public Secretaria() {
     }
 
-    public Secretaria(int id_Secretaria, Usuario usuario, String nombre, String apellido, String dni, String edad) {
+    public Secretaria(String Horario, Usuario usuario, String nombre, String apellido, String dni, String edad) {
         super(nombre, apellido, dni, edad);
-        this.id_Secretaria = id_Secretaria;
+        this.Horario = Horario;
         this.usuario = usuario;
     }
 
-    public int getId_Secretaria() {
-        return id_Secretaria;
+    public String getHorario() {
+        return Horario;
     }
 
-    public void setId_Secretaria(int id_Secretaria) {
-        this.id_Secretaria = id_Secretaria;
+    public void setHorario(String Horario) {
+        this.Horario = Horario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Usuario getUsuario() {

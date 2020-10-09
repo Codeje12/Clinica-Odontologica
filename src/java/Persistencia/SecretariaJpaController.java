@@ -38,7 +38,7 @@ public class SecretariaJpaController implements Serializable {
             em.persist(secretaria);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findSecretaria(secretaria.getId_Secretaria()) != null) {
+            if (findSecretaria(secretaria.getId()) != null) {
                 throw new PreexistingEntityException("Secretaria " + secretaria + " already exists.", ex);
             }
             throw ex;
@@ -59,7 +59,7 @@ public class SecretariaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = secretaria.getId_Secretaria();
+                int id = secretaria.getId();
                 if (findSecretaria(id) == null) {
                     throw new NonexistentEntityException("The secretaria with id " + id + " no longer exists.");
                 }
@@ -80,7 +80,7 @@ public class SecretariaJpaController implements Serializable {
             Secretaria secretaria;
             try {
                 secretaria = em.getReference(Secretaria.class, id);
-                secretaria.getId_Secretaria();
+                secretaria.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The secretaria with id " + id + " no longer exists.", enfe);
             }

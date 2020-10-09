@@ -1,14 +1,19 @@
 package Logica;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)//TABLE_PER_CLASS,JOINED,SINGLE_TABLE
 public class Persona {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
     String dni;
     String nombre;
     String apellido;
