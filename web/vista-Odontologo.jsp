@@ -1,3 +1,5 @@
+<%@page import="Logica.Odontologo"%>
+<%@page import="Logica.Paciente"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Turno"%>
 <%@page import="Logica.Usuario"%>
@@ -18,34 +20,38 @@
         <div class="col-md-6">
             <div class=" tex-center panel panel-default">
                 <div class="panel-heading text-center">
-                    Turnos
+                    Registo de Pacientes
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="tablaTurnos">
                             <thead>
                                 <tr>
-                                    <th>Dia</th>
-                                    <th>Hora</th>
-                                    <th>Diagnostico</th>
-                                    <th>Tratamiento</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>fec. Nacimiento</th>
+                                    <th>Especialida</th>
+                                    <th>Horario llegada</th>
+                                    <th>Horario Salida</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <%
+                                    <%  
                                         Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
-                                        List<Turno> listaTurno = ctr.traerTurnos();
-                                        for (Turno tur : listaTurno){
+                                        List<Odontologo> listaOdontologo = ctr.traerOdontologo();
+                                        for (Odontologo odon : listaOdontologo) {
                                     %>
-                                    <td><%=tur.getDia()%></td>
-                                    <td><%=tur.getHora()%></td>
-                                    <td><%=tur.getDiagnostico()%></td>
-                                    <td><%=tur.getTratamiento()%></td>
+                                    <td><%=odon.getNombre()%></td>
+                                    <td><%=odon.getApellido()%></td>
+                                    <td><%=odon.getEdad()%></td>
+                                    <td><%=odon.getEspecialidad()%></td>
+                                    <td><%=odon.getHorarioinicioTrabajo() %></td>
+                                    <td><%=odon.getHorarioFinTrabajo()%></td>
                                 </tr>
-                                    <% }%>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>

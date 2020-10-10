@@ -1,3 +1,4 @@
+<%@page import="Logica.Paciente"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Turno"%>
 <%@page import="Logica.Usuario"%>
@@ -18,34 +19,34 @@
         <div class="col-md-6">
             <div class=" tex-center panel panel-default">
                 <div class="panel-heading text-center">
-                    Turnos
+                    Registo de Pacientes
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="tablaTurnos">
                             <thead>
                                 <tr>
-                                    <th>Dia</th>
-                                    <th>Hora</th>
-                                    <th>Diagnostico</th>
-                                    <th>Tratamiento</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>fec. Nacimiento</th>
+                                    <th>Direccion</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <%
+                                    <%  
                                         Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
-                                        List<Turno> listaTurno = ctr.traerTurnos();
-                                        for (Turno tur : listaTurno){
+                                        List<Paciente> listaPaciente = ctr.traerPaciente();
+                                        for (Paciente pac : listaPaciente) {
                                     %>
-                                    <td><%=tur.getDia()%></td>
-                                    <td><%=tur.getHora()%></td>
-                                    <td><%=tur.getDiagnostico()%></td>
-                                    <td><%=tur.getTratamiento()%></td>
+                                    <td><%=pac.getNombre() %></td>
+                                    <td><%=pac.getApellido() %></td>
+                                    <td><%=pac.getEdad() %></td>
+                                    <td><%=pac.getDireccion() %></td>
                                 </tr>
-                                    <% }%>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>

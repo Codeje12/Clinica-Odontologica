@@ -1,4 +1,11 @@
+<%@page import="Logica.Odontologo"%>
+<%@page import="java.util.List"%>
+<%@page import="Logica.Turno"%>
 <%@include file="pantilla/documento-apertura.jsp"%>
+<jsp:include page="pantilla/barra-top.jsp"/> 
+<jsp:include page="pantilla/barra-lado.jsp"/> 
+<br>
+<br>
 <div class="text-center">  
     <h1>Registro de turno</h1>
     <h3>Datos del turno</h3>
@@ -37,6 +44,20 @@
                     <option value="18" >18</option>
                     <option value="19" >19</option>
                     <option value="20" >20</option>
+                </select>
+           
+            </p>
+            <p class="col-md-4"></p>
+            <p class="col-md-4"></p>
+            <p class="text-center">
+                <select class="select-login text-center" name="odontologo">
+                <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
+                     List<Odontologo> listaOdontologo = ctr.traerOdontologo();
+                     
+                     for (Odontologo odon : listaOdontologo){ %>        
+                    <option value="<%odon.getId(); %>"><%=odon.getNombre()%></option>
+                 <% } %>
+                
                 </select>
             </p>
             <p class="col-md-4">

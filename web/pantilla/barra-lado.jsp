@@ -11,10 +11,7 @@
                         <div>*<strong> Odontólogo</strong></div>
                     </div>
                 </div>
-                <!--end user image section-->
             </li>
-
-
             <li class="selected">
                 <a href="inicio.jsp"><i class="fa fa-home"></i>Inicio</a>
             </li>
@@ -25,19 +22,19 @@
                         <a href="carga-Pacientes.jsp">Nuevo Paciente</a>
                     </li>
                     <li>
-                        <a href="modificar-Pacientes.jsp">Modificar Paciente</a>
+                        <a href="modificar-Paciente.jsp">Modificar Paciente</a>
                     </li>
                     <li>
-                        <a href="tablas-Turnos.jsp">Eliminar Paciente</a>
+                        <a href="eliminar-Paciente.jsp">Eliminar Paciente</a>
                     </li>
                     <li>
-                        <a href="tablas-Turnos.jsp">Listar Pacientes</a>
+                        <a href="vista-Paciente.jsp">Listar Pacientes</a>
                     </li>
                 </ul>
                 <!-- second-level-items -->
             </li>
             <li>
-                <a href="realizar-Turnos.jsp"><i class="fa fa-edit fa-fw"></i>Trunos</a>
+                <a href="cargar-Turnos.jsp"><i class="fa fa-edit fa-fw"></i>Trunos</a>
             </li>
             <li>
                 <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas<span class="fa arrow"></span></a>
@@ -46,7 +43,7 @@
                         <a href="carga-Odontologos.jsp">Registrar Odontologo</a>
                     </li>
                     <li>
-                        <a href="carga-Odontologos.jsp">Listar Odontologos</a>
+                        <a href="vista-Odontologo.jsp">Listar Odontologos</a>
                     </li>
                 </ul>
             </li>

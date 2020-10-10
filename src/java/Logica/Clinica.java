@@ -4,28 +4,39 @@ import Persistencia.ControladoraPersistencia;
 import java.util.List;
 
 public class Clinica {
-    private List<Usuario> listUsuario; 
+
+    private List<Usuario> listUsuario;
     ControladoraPersistencia persistencia = new ControladoraPersistencia();
 
-    public void crearPaciente(String nombre, String apellido, String dni, String sexo, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
+    public boolean crearPaciente(String nombre, String apellido, String dni, String sexo, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
         Paciente pac = new Paciente();
+        boolean valor = false;
 
         try {
-            pac.setNombre(nombre);
-            pac.setApellido(apellido);
-            pac.setDni(dni);
-            pac.setSexo(sexo);
-            pac.setEdad(edad);
-            pac.setDireccion(direccion);
-            pac.setObraSocial(obra);
-            pac.setTutor(tutor);
-            pac.setContactoTutor(contacto);
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "" )
+                    || (dni == null || dni == "" )|| (edad == null || edad =="" )) {
+                valor = false;
+                return valor;
+            } else {
+                pac.setNombre(nombre);
+                pac.setApellido(apellido);
+                pac.setDni(dni);
+                pac.setSexo(sexo);
+                pac.setEdad(edad);
+                pac.setDireccion(direccion);
+                pac.setObraSocial(obra);
+                pac.setTutor(tutor);
+                pac.setContactoTutor(contacto);
 
-            persistencia.crearPaciente(pac);
+                persistencia.crearPaciente(pac);
+                valor= true;
+                return valor;
+            }
 
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+        return valor;
 
     }
 
@@ -64,8 +75,7 @@ public class Clinica {
 
         return pagina;
     }*/
-
-    public void crearOdontologo(String nombre,String apellido,String dni,String edad,String especialidad,String horarioInicioTrabajo,String horarioFinTrabajo) {
+    public void crearOdontologo(String nombre, String apellido, String dni, String edad, String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo) {
         Odontologo odon = new Odontologo();
         try {
             odon.setNombre(nombre);
@@ -75,7 +85,7 @@ public class Clinica {
             odon.setEspecialidad(especialidad);
             odon.setHorarioInicioTrabajo(horarioInicioTrabajo);
             odon.setHorarioFinTrabajo(horarioFinTrabajo);
-            
+
             persistencia.crearOdontologo(odon);
         } catch (Exception ex) {
             System.out.println("error " + ex);
@@ -85,9 +95,9 @@ public class Clinica {
     public boolean verficacionAcceso(String usuario, String password) {
         boolean permiso = false;
         this.listUsuario = this.persistencia.accederLogin();
-        
-        for(Usuario user : this.listUsuario){
-            if(user.getUsuario().equals(usuario) && user.getPass().equals(password)){
+
+        for (Usuario user : this.listUsuario) {
+            if (user.getUsuario().equals(usuario) && user.getPass().equals(password)) {
                 permiso = true;
                 return permiso;
             }
@@ -95,7 +105,7 @@ public class Clinica {
         return permiso;
     }
 
-    public void crearTurno(String dia, String hora, String tratamiento, String diagnostico, double costo) {
+    public void crearTurno(String dia, String hora, String tratamiento, String diagnostico, double costo /*, Odontologo odon*/ ) {
         Turno tur = new Turno();
         try {
             tur.setDia(dia);
@@ -103,10 +113,48 @@ public class Clinica {
             tur.setTratamiento(tratamiento);
             tur.setDiagnostico(diagnostico);
             tur.setCosto(costo);
+            //tur.setOdontologo(odon);
             persistencia.crearTurno(tur);
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
     }
 
+    public List<Turno> traerTurnos() {
+
+        return persistencia.traerTurno();
+    }
+
+    String pagina;
+
+    public void eliminarPaciente(String dni) {
+        this.persistencia.eliminarPaciente(dni);
+    }
+
+    public void modificarPaciente(String nombre, String apellido, String dni, String sexo, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
+        Paciente pac = new Paciente();
+        try {
+            pac.setNombre(nombre);
+            pac.setApellido(apellido);
+            pac.setDni(dni);
+            pac.setSexo(sexo);
+            pac.setEdad(edad);
+            pac.setDireccion(direccion);
+            pac.setObraSocial(obra);
+            pac.setTutor(tutor);
+            pac.setContactoTutor(contacto);
+
+            this.persistencia.modificarPaciente(pac);
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
+    }
+
+    public List<Paciente> traerPaciente() {
+        return persistencia.traerPaciente();
+    }
+
+    public List<Odontologo> traerOdontologo() {
+        return persistencia.traerOdontologo();
+    }
 }

@@ -1,6 +1,7 @@
 package Servlets;
 
 import Logica.Clinica;
+import Logica.Odontologo;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +25,10 @@ public class ServletsTruno extends HttpServlet {
         processRequest(request, response);
         String dia = request.getParameter("dia");
         String hora = request.getParameter("hora");
-        String ampm = request.getParameter("ampm");
         String tratamiento = request.getParameter("tratamiento");
         String diagnostico = request.getParameter("diagnostico");
         double costo = Double.parseDouble(request.getParameter("costo"));
+        //Odontologo odon = Odontologo.parseOdontologo(request.getParameter("odontologo"));
 
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
@@ -36,12 +37,13 @@ public class ServletsTruno extends HttpServlet {
         request.getSession().setAttribute("tratamiento",tratamiento);
         request.getSession().setAttribute("diagnostico",diagnostico);
         request.getSession().setAttribute("costo", costo);
+        //request.getSession().setAttribute("odontologo", idOdon);
         response.sendRedirect("carga-Correcta.jsp");
         Clinica control = new Clinica();
         
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
-        control.crearTurno(dia,hora,tratamiento,diagnostico,costo);
+        control.crearTurno(dia,hora,tratamiento,diagnostico,costo /*,idOdon*/);
     }
 
    

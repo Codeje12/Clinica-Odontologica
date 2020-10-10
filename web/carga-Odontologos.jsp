@@ -1,5 +1,8 @@
-<%@include file="pantilla/documento-apertura.jsp" %>
-
+<%@include file="pantilla/documento-apertura.jsp"%>
+<jsp:include page="pantilla/barra-top.jsp"/> 
+<jsp:include page="pantilla/barra-lado.jsp"/> 
+<br>
+<br>
 <div class="text-center">  
     <h1>Registro</h1>
     <h3>Datos del Odontologo</h3>
@@ -10,9 +13,9 @@
     </div>
     <div  class="col-md-4">
         <form action="ServletsOdontologo" method="POST">
-            <p><input class="input-password text-center" type="text" name="nombre" placeholder="Nombre " ></p>
-            <p><input class="input-password text-center" type="text" name="apellido" placeholder="Apellido"></p>
-            <p><input class="input-password text-center" type="text" name="dni" placeholder="Dni"></p>
+            <p><input class="input-password text-center" type="text" name="nombre" placeholder="Nombre " required></p>
+            <p><input class="input-password text-center" type="text" name="apellido" placeholder="Apellido" required></p>
+            <p><input class="input-password text-center" type="text" name="dni" placeholder="Dni" required></p>
             <p><input class="input-password text-center" type="date" name="edad"></p>
             <p><select class="select-login text-center" name="especialidad">
                     <option value="error">*Seleccionar especialidad*</option>
@@ -28,7 +31,7 @@
                 <label>Desde las:</label>
             </p>
             <p class="col-md-4">
-                <select class="select-login text-center" name="horarioInicioTrabajo">
+                <select class="select-login text-center" name="horarioInicioTrabajo" required >
                     <option value="error">Hora</option>
                     <option value="7" >7</option>
                     <option value="8" >8</option>
@@ -42,7 +45,7 @@
                 <label>Hasta las:</label>
             </p>      
             <p class="col-md-4">
-                <select class="select-login text-center" name="horarioFinTrabajo">
+                <select class="select-login text-center" name="horarioFinTrabajo" required>
                     <option value="error">Hora</option>
                     <option value="13">13</option>
                     <option value="14" >14</option>

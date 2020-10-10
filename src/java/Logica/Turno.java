@@ -13,17 +13,17 @@ public class Turno implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Turno;
+    int id_Turno;
     @Basic
-    private String dia;
-    private String hora;
-    private String tratamiento;
-    private String diagnostico;
-    private Odontologo odontologo;
-    private double costo;
+    String dia;
+    String hora;
+    String tratamiento;
+    String diagnostico;
+    double costo;
 
     @OneToOne
-    private Paciente pacient;
+    Odontologo odontologo;
+    Paciente pacient;
 
     public Turno() {
     }

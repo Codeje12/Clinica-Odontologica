@@ -5,6 +5,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Odontologo extends Persona{
+    
     String especialidad;
     String horarioInicioTrabajo;
     String horarioFinTrabajo;
@@ -14,11 +15,21 @@ public class Odontologo extends Persona{
     public Odontologo() {
     }
 
-    public Odontologo(String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo, Usuario usuario) {
+    public Odontologo(String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo, Usuario usuario, String nombre, String apellido, String dni, String edad) {
+        super(nombre, apellido, dni, edad);
         this.especialidad = especialidad;
         this.horarioInicioTrabajo = horarioInicioTrabajo;
         this.horarioFinTrabajo = horarioFinTrabajo;
         this.usuario = usuario;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getHorarioinicioTrabajo() {
@@ -35,14 +46,6 @@ public class Odontologo extends Persona{
 
     public void setHorarioFinTrabajo(String horarioFinTrabajo) {
         this.horarioFinTrabajo = horarioFinTrabajo;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEspecialidad() {

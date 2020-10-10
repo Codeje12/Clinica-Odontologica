@@ -15,7 +15,7 @@ public class Secretaria extends Persona{
     @Basic
     String Horario;
     @OneToOne
-    private Usuario usuario;
+     Usuario usuario;
 
     public Secretaria() {
     }
@@ -26,14 +26,6 @@ public class Secretaria extends Persona{
         this.usuario = usuario;
     }
 
-    public String getHorario() {
-        return Horario;
-    }
-
-    public void setHorario(String Horario) {
-        this.Horario = Horario;
-    }
-
     public int getId() {
         return id;
     }
@@ -42,6 +34,14 @@ public class Secretaria extends Persona{
         this.id = id;
     }
 
+
+    public String getHorario() {
+        return Horario;
+    }
+
+    public void setHorario(String Horario) {
+        this.Horario = Horario;
+    }
     public Usuario getUsuario() {
         return usuario;
     }

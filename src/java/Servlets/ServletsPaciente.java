@@ -31,6 +31,8 @@ public class ServletsPaciente extends HttpServlet {
         boolean tutor = Boolean.parseBoolean(request.getParameter("tutor"));
         String contacto = request.getParameter("contacto");
 
+        String accion = request.getParameter("accion");
+
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
         request.getSession().setAttribute("nombre", nombre);
@@ -42,18 +44,34 @@ public class ServletsPaciente extends HttpServlet {
         request.getSession().setAttribute("obra", obra);
         request.getSession().setAttribute("tutor", tutor);
         request.getSession().setAttribute("contacto", contacto);
-        response.sendRedirect("carga-Correcta.jsp");
+        request.getSession().setAttribute("accion", accion);
+
         Clinica control = new Clinica();
-        
+
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
-        control.crearPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);
-        //control.eliminarPaciente(dni);
-        
-        
+        if (accion.equals("crear")) {
+            if (control.crearPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto)) {
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        } else if (accion.equals("modificar")) {
+            if (!dni.isEmpty()) {
+                control.modificarPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
 
-        
-
+        } else if (accion.equals("eliminar")) {
+            if (!dni.isEmpty()) {
+                control.eliminarPaciente(dni);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        }
     }
 
     @Override
