@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class=" tex-center panel panel-default">
                 <div class="panel-heading text-center">
-                    Registo de Pacientes
+                    Registo de Odontologos
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">

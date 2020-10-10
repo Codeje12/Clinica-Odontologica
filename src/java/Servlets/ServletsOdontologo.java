@@ -28,7 +28,7 @@ public class ServletsOdontologo extends HttpServlet {
         String especialidad = request.getParameter("especialidad");
         String horarioInicioTrabajo = request.getParameter("horarioInicioTrabajo");
         String horarioFinTrabajo = request.getParameter("horarioFinTrabajo");
-
+        String accion = request.getParameter("accion");
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
         request.getSession().setAttribute("nombre", nombre);
@@ -39,16 +39,34 @@ public class ServletsOdontologo extends HttpServlet {
         request.getSession().setAttribute("horarioInicioTrabajo", horarioInicioTrabajo);
         request.getSession().setAttribute("horarioFinTrabajo", horarioFinTrabajo);
 
-        response.sendRedirect("carga-Correcta.jsp");
         Clinica control = new Clinica();
-        
-        control.crearOdontologo(nombre,apellido,dni,edad,especialidad,horarioInicioTrabajo,horarioFinTrabajo);
-        
-    }
+        if (accion.equals("crear")) {
+            if (control.crearOdontologo(nombre, apellido, dni, edad, especialidad, horarioInicioTrabajo, horarioFinTrabajo)) {
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        } else if (accion.equals("modificar")) {
+            if (!dni.isEmpty()) {
+                control.modificarOdontologo(nombre, apellido, dni, edad, horarioInicioTrabajo, horarioFinTrabajo);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
 
-    @Override
-    public String getServletInfo() {
+        } else if (accion.equals("eliminar")) {
+            if (!dni.isEmpty()) {
+                control.eliminarOdontologo(dni);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        }
+
+}
+
+@Override
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

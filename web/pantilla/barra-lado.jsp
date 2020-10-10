@@ -19,40 +19,52 @@
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Pacientes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level text-center">
                     <li>
-                        <a href="carga-Pacientes.jsp">Nuevo Paciente</a>
+                        <a href="carga-Pacientes.jsp">Nuevo</a>
                     </li>
                     <li>
-                        <a href="modificar-Paciente.jsp">Modificar Paciente</a>
+                        <a href="modificar-Paciente.jsp">Modificar</a>
                     </li>
                     <li>
-                        <a href="eliminar-Paciente.jsp">Eliminar Paciente</a>
+                        <a href="eliminar-Paciente.jsp">Eliminar</a>
                     </li>
                     <li>
-                        <a href="vista-Paciente.jsp">Listar Pacientes</a>
+                        <a href="vista-Paciente.jsp">Listar</a>
                     </li>
                 </ul>
                 <!-- second-level-items -->
             </li>
             <li>
-                <a href="cargar-Turnos.jsp"><i class="fa fa-edit fa-fw"></i>Trunos</a>
+                <a href="cargar-Turnos.jsp"><i class="fa fa-edit fa-fw"></i>Turnos<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level text-center">
+                    <li>
+                        <a href="cargar-Turnos.jsp">Registrar</a>
+                    </li>
+                    <li>
+                        <a href="modificar-Turnos.jsp">Modificar</a>
+                    </li>
+                    <li>
+                        <a href="eliminar-Turnos.jsp">Eliminar</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="especialistas.jsp"><i class="fa fa-flask fa-fw"></i>Especialistas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level text-center">
                     <li>
-                        <a href="carga-Odontologos.jsp">Registrar Odontologo</a>
+                        <a href="carga-Odontologos.jsp">Registrar</a>
                     </li>
                     <li>
-                        <a href="vista-Odontologo.jsp">Listar Odontologos</a>
+                        <a href="modificar-Odontologos.jsp">Modificar</a>
+                    </li>
+                    <li>
+                        <a href="eliminar-Odontologo.jsp">Eliminar</a>
+                    </li>
+                    <li>
+                        <a href="vista-Odontologo.jsp">Lista</a>
                     </li>
                 </ul>
             </li>
-            <li>
-                
-            </li>
-            <li>
-                <a href="pagina-Proceso.jsp"><i class="fa fa-table fa-fw"></i>Secretarias</a>
-            </li>
+
             <li>
                 <a href="pagina-Proceso.jsp"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
             </li>

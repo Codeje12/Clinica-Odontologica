@@ -1,10 +1,10 @@
-<%@include file="pantilla/documento-apertura.jsp"%>
+<%@include file="pantilla/documento-apertura.jsp" %>
 <jsp:include page="pantilla/barra-top.jsp"/> 
 <jsp:include page="pantilla/barra-lado.jsp"/> 
 <br>
 <br>
 <div class="text-center">  
-    <h1>Registro</h1>
+    <h1>Modificar Odontologo</h1>
     <h3>Datos del Odontologo</h3>
 </div>
 
@@ -14,22 +14,12 @@
     <div  class="col-md-4">
         <form action="ServletsOdontologo" method="POST">
             <select name="accion">
-                <option value="crear" class="select-login centrar" >Agregar</option>
+                <option value="modificar">Modificar</option>
             </select>
             <p><input class="input-password text-center" type="text" name="nombre" placeholder="Nombre " required></p>
             <p><input class="input-password text-center" type="text" name="apellido" placeholder="Apellido" required></p>
-            <p><input class="input-password text-center" type="text" name="dni" placeholder="Dni" required></p>
+            <p><input class="input-password text-center" type="text" name="dni" value="" placeholder="Dni" required></p>
             <p><input class="input-password text-center" type="date" name="edad"></p>
-            <p><select class="select-login text-center" name="especialidad">
-                    <option value="error">*Seleccionar especialidad*</option>
-                    <option value="odontopediatria">Odontopediatría</option>
-                    <option value="ortodoncia" >Ortodoncia</option>
-                    <option value="odontologia preventiva"> Odontología preventiva</option>
-                    <option value="patologia bucal"> Patología bucal</option>
-                    <option value="cirugíai maxilofacial" >Cirugía maxilofacial</option>
-                    <option value="odontologia forense">Odontología forense</option>
-                    <option value="rehabilitacion oral">Rehabilitación oral</option>
-                </select></p>
             <p class="col-md-2">
                 <label>Desde las:</label>
             </p>

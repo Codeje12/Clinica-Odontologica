@@ -29,23 +29,26 @@
                                     <th>Hora</th>
                                     <th>Diagnostico</th>
                                     <th>Tratamiento</th>
+                                    <th>Odontologo</th>
+                                    <th>Paciente</th>
                                     <th></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <%
-                                        Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
+                                    <%  Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
                                         List<Turno> listaTurno = ctr.traerTurnos();
-                                        for (Turno tur : listaTurno){
+                                        for (Turno tur : listaTurno) {
                                     %>
                                     <td><%=tur.getDia()%></td>
                                     <td><%=tur.getHora()%></td>
                                     <td><%=tur.getDiagnostico()%></td>
                                     <td><%=tur.getTratamiento()%></td>
+                                    <td><%=tur.getOdontologo().getNombre()%></td>
+                                    <td><%=tur.getPacient().getNombre()%></td>
                                 </tr>
-                                    <% }%>
+                                <% }%>
                             </tbody>
                         </table>
                     </div>

@@ -13,8 +13,8 @@ public class Clinica {
         boolean valor = false;
 
         try {
-            if ((nombre == null || nombre == "") || (apellido == null || apellido == "" )
-                    || (dni == null || dni == "" )|| (edad == null || edad =="" )) {
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "")
+                    || (dni == null || dni == "") || (edad == null || edad == "")) {
                 valor = false;
                 return valor;
             } else {
@@ -29,7 +29,7 @@ public class Clinica {
                 pac.setContactoTutor(contacto);
 
                 persistencia.crearPaciente(pac);
-                valor= true;
+                valor = true;
                 return valor;
             }
 
@@ -40,56 +40,35 @@ public class Clinica {
 
     }
 
-    /* Verificacion vieja
-    String pagina;
-
-    public String verficacionAcceso(String usuario, String password) {
-        int id;
-        // codigo improvisado para que funcione el login en la entrega
-        switch (usuario) {
-            case "odontologo":
-                id = 1;
-                break;
-            case "secretaria":
-                id = 2;
-                break;
-            default:
-                id = 0;
-                break;
-        }
-        Usuario user = this.persistencia.accederLogin(id);
-        if (id != 0) {
-            if (password != "" || password != null) {
-                if (user.getUsuario().equals(usuario) && user.getPass().equals(password)) {
-                    this.pagina = "inicio.jsp";
-                } else {
-                    this.pagina = "index.jsp";
-                }
-            } else {
-                this.pagina = "index.jsp";
-            }
-        } else {
-            this.pagina = "index.jsp";
-
-        }
-
-        return pagina;
-    }*/
-    public void crearOdontologo(String nombre, String apellido, String dni, String edad, String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo) {
+    public boolean crearOdontologo(String nombre, String apellido, String dni, String edad, String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo) {
         Odontologo odon = new Odontologo();
-        try {
-            odon.setNombre(nombre);
-            odon.setApellido(apellido);
-            odon.setDni(dni);
-            odon.setEdad(edad);
-            odon.setEspecialidad(especialidad);
-            odon.setHorarioInicioTrabajo(horarioInicioTrabajo);
-            odon.setHorarioFinTrabajo(horarioFinTrabajo);
 
-            persistencia.crearOdontologo(odon);
+        boolean valor = false;
+
+        try {
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "")
+                    || (dni == null || dni == "") || (edad == null || edad == "")) {
+                valor = false;
+                return valor;
+            } else {
+                odon.setNombre(nombre);
+                odon.setApellido(apellido);
+                odon.setDni(dni);
+                odon.setEdad(edad);
+                odon.setEspecialidad(especialidad);
+                odon.setHorarioInicioTrabajo(horarioInicioTrabajo);
+                odon.setHorarioFinTrabajo(horarioFinTrabajo);
+
+                persistencia.crearOdontologo(odon);
+
+                valor = true;
+                return valor;
+            }
+
         } catch (Exception ex) {
-            System.out.println("error " + ex);
+            System.out.println("Error: " + ex);
         }
+        return valor;
     }
 
     public boolean verficacionAcceso(String usuario, String password) {
@@ -105,19 +84,26 @@ public class Clinica {
         return permiso;
     }
 
-    public void crearTurno(String dia, String hora, String tratamiento, String diagnostico, double costo /*, Odontologo odon*/ ) {
+    public boolean crearTurno(String dia, String hora, String tratamiento, String diagnostico, double costo, int odontologo, int paciente) {
         Turno tur = new Turno();
+        boolean valor = false;
         try {
             tur.setDia(dia);
             tur.setHora(hora);
             tur.setTratamiento(tratamiento);
             tur.setDiagnostico(diagnostico);
             tur.setCosto(costo);
-            //tur.setOdontologo(odon);
+            Odontologo odo = this.persistencia.traerOdontologoUnico(odontologo);
+            tur.setOdontologo(odo);
+            Paciente paci = this.persistencia.traerPacienteUnico(paciente);
+            tur.setPacient(paci);
             persistencia.crearTurno(tur);
+            valor = true;
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
+            valor = false;
         }
+        return valor;
     }
 
     public List<Turno> traerTurnos() {
@@ -131,20 +117,40 @@ public class Clinica {
         this.persistencia.eliminarPaciente(dni);
     }
 
-    public void modificarPaciente(String nombre, String apellido, String dni, String sexo, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
-        Paciente pac = new Paciente();
+    public void eliminarOdontologo(String dni) {
+        this.persistencia.eliminarOdontologo(dni);
+    }
+    public void eliminarTurno(int paciente) {
+        this.persistencia.eliminarTurno(paciente);
+    }
+
+    public void modificarPaciente(String nombre, String apellido, String dni, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
+        Paciente pac = persistencia.traerPacienteUnico(dni);
+
         try {
             pac.setNombre(nombre);
             pac.setApellido(apellido);
-            pac.setDni(dni);
-            pac.setSexo(sexo);
             pac.setEdad(edad);
             pac.setDireccion(direccion);
             pac.setObraSocial(obra);
             pac.setTutor(tutor);
             pac.setContactoTutor(contacto);
-
             this.persistencia.modificarPaciente(pac);
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
+    }
+
+    public void modificarTurno(String dia, String hora, String tratamiento, String diagnostico, double costo, int odontologo, int paciente) {
+        Turno tur = persistencia.traerTurnoUnico(paciente);
+
+        try {
+            tur.setDia(dia);
+            tur.setHora(hora);
+            tur.setTratamiento(tratamiento);
+            tur.setDiagnostico(diagnostico);
+            tur.setCosto(costo);
+            this.persistencia.modificarTurno(tur);
         } catch (Exception ex) {
             System.out.println("Error " + ex);
         }
@@ -157,4 +163,22 @@ public class Clinica {
     public List<Odontologo> traerOdontologo() {
         return persistencia.traerOdontologo();
     }
+
+    public void modificarOdontologo(String nombre, String apellido, String dni, String edad, String horarioInicioTrabajo, String horarioFinTrabajo) {
+        Odontologo odo = persistencia.traerOdontologoUnico(dni);
+
+        try {
+            odo.setNombre(nombre);
+            odo.setApellido(apellido);
+            odo.setEdad(edad);
+            odo.setHorarioInicioTrabajo(horarioInicioTrabajo);
+            odo.setHorarioFinTrabajo(horarioFinTrabajo);
+            
+            this.persistencia.modificar(odo);
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
+    }
+
+    
 }

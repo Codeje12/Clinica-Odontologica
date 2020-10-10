@@ -12,11 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletsTruno", urlPatterns = {"/ServletsTruno"})
 public class ServletsTruno extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
     }
 
     @Override
@@ -28,25 +27,51 @@ public class ServletsTruno extends HttpServlet {
         String tratamiento = request.getParameter("tratamiento");
         String diagnostico = request.getParameter("diagnostico");
         double costo = Double.parseDouble(request.getParameter("costo"));
-        //Odontologo odon = Odontologo.parseOdontologo(request.getParameter("odontologo"));
+        int odontologo = Integer.parseInt(request.getParameter("odontologo"));
+        int paciente = Integer.parseInt(request.getParameter("paciente"));
 
+        String accion = request.getParameter("accion");
+        
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
-        request.getSession().setAttribute("dia",dia);
-        request.getSession().setAttribute("hora",hora);
-        request.getSession().setAttribute("tratamiento",tratamiento);
-        request.getSession().setAttribute("diagnostico",diagnostico);
+        request.getSession().setAttribute("dia", dia);
+        request.getSession().setAttribute("hora", hora);
+        request.getSession().setAttribute("tratamiento", tratamiento);
+        request.getSession().setAttribute("diagnostico", diagnostico);
         request.getSession().setAttribute("costo", costo);
-        //request.getSession().setAttribute("odontologo", idOdon);
-        response.sendRedirect("carga-Correcta.jsp");
-        Clinica control = new Clinica();
+        request.getSession().setAttribute("odontologo", odontologo);
+        request.getSession().setAttribute("paciente", paciente);
+        request.getSession().setAttribute("accion", accion);
         
+        Clinica control = new Clinica();
+
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
-        control.crearTurno(dia,hora,tratamiento,diagnostico,costo /*,idOdon*/);
+        if (accion.equals("crear")) {
+            if (control.crearTurno(dia, hora, tratamiento, diagnostico, costo, odontologo,paciente)) {
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        } else if (accion.equals("modificar")) {
+            if (!dia.isEmpty() || !hora.isEmpty()) {
+                control.modificarTurno(dia, hora, tratamiento, diagnostico, costo,odontologo, paciente);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+
+        } else if (accion.equals("eliminar")) {
+            if (!dia.isEmpty()) {
+                control.eliminarTurno(paciente);
+                response.sendRedirect("carga-Correcta.jsp");
+            } else {
+                response.sendRedirect("carga-Error.jsp");
+            }
+        }
+
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";

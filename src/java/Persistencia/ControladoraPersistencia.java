@@ -48,11 +48,7 @@ public class ControladoraPersistencia {
         }
     }
 
-    public List<Turno> traerTurno() {
-        List<Turno> listaTurno;
-        listaTurno = this.turnoJpa.findTurnoEntities();
-        return listaTurno;
-    }
+    
 
     public void eliminarPaciente(String dni) {
         List<Paciente> listaPaciente = this.pacienteJpa.findPacienteEntities();
@@ -60,6 +56,33 @@ public class ControladoraPersistencia {
             if (pac.getDni().equals(dni)) {
                 try {
                     this.pacienteJpa.destroy(pac.getId());
+                    break;
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    public void eliminarTurno(int paciente) {
+        List<Turno> listaTurno = this.turnoJpa.findTurnoEntities();
+        for (Turno tur : listaTurno) {
+            if (tur.getPacient().getId() == paciente ) {
+                try {
+                    this.pacienteJpa.destroy(tur.getId_Turno());
+                    break;
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    public void eliminarOdontologo(String dni) {
+        List<Odontologo> listaOdontologo = this.odontologoJpa.findOdontologoEntities();
+        for (Odontologo odo : listaOdontologo) {
+            if (odo.getDni().equals(dni)) {
+                try {
+                    this.odontologoJpa.destroy(odo.getId());
                     break;
                 } catch (NonexistentEntityException ex) {
                     Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,21 +104,30 @@ public class ControladoraPersistencia {
     }
 
     public void modificarPaciente(Paciente paciente) {
-        List<Paciente> listaPaciente = this.pacienteJpa.findPacienteEntities();
         try {
-            if (buscarPaciente(paciente.getDni())) {
-                for (Paciente pac : listaPaciente) {
-                    if (pac.getDni().equals(paciente.getDni())) {
-                        this.pacienteJpa.edit(paciente);
-                    }
-
-                }
-
-            }
-
+            this.pacienteJpa.edit(paciente);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+    
+    public void modificarTurno(Turno turno) {
+        try {
+            this.turnoJpa.edit(turno);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    public void modificar(Odontologo odontologo) {
+        try {
+            this.odontologoJpa.edit(odontologo);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public List<Paciente> traerPaciente() {
@@ -103,10 +135,80 @@ public class ControladoraPersistencia {
         listaPaciente = this.pacienteJpa.findPacienteEntities();
         return listaPaciente;
     }
+    public Paciente traerPacienteUnico(String dni) {
+        Paciente paciente = null;
+        List<Paciente> listaPaciente;
+        listaPaciente = traerPaciente();
+        for (Paciente pac : listaPaciente) {
+            if (pac.getDni().equals(dni)) {
+                paciente = pac;
+                return pac;
+            }
+        }
+        return paciente;
+    }
+    public List<Turno> traerTurno() {
+        List<Turno> listaTurno;
+        listaTurno = this.turnoJpa.findTurnoEntities();
+        return listaTurno;
+    }
+    
+    public Turno traerTurnoUnico(int id) {
+        Turno turn = null;
+        List<Turno> listaTurno;
+        listaTurno = traerTurno();
+        Paciente pac = traerPacienteUnico(id);
+        for (Turno tur : listaTurno) {
+            if (tur.getPacient().getId() == pac.getId()) {
+                turn = tur;
+                return turn;
+            }
+        }
+        return turn;
+    }
 
     public List<Odontologo> traerOdontologo() {
         List<Odontologo> listaOdontologo;
         listaOdontologo = this.odontologoJpa.findOdontologoEntities();
         return listaOdontologo;
     }
+    
+
+    public Odontologo traerOdontologoUnico(int id) {
+        Odontologo odon2 = null;
+        List<Odontologo> listaOdontolo;
+        listaOdontolo = traerOdontologo();
+        for (Odontologo odont : listaOdontolo) {
+            if (odont.getId() == id) {
+                odon2 = odont;
+            }
+        }
+        return odon2;
+    }
+    public Odontologo traerOdontologoUnico(String dni) {
+        Odontologo odontologo = null;
+        List<Odontologo> listaOdontologo;
+        listaOdontologo = traerOdontologo();
+        for (Odontologo odo : listaOdontologo) {
+            if (odo.getDni().equals(dni)) {
+                odontologo = odo;
+                return odontologo;
+            }
+        }
+        return odontologo;
+    }
+    public Paciente traerPacienteUnico(int id) {
+        Paciente pac2 = null;
+        List<Paciente> listaPaciente;
+        listaPaciente = traerPaciente();
+        for (Paciente pac : listaPaciente) {
+            if (pac.getId() == id) {
+                pac2 = pac;
+            }
+        }
+        return pac2;
+    }
+
+    
+
 }

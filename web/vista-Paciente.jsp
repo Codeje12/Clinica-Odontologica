@@ -28,7 +28,7 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>fec. Nacimiento</th>
+                                    <th>F. Nacimiento</th>
                                     <th>Direccion</th>
                                     <th></th>
                                 </tr>

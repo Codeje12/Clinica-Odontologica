@@ -58,7 +58,7 @@ public class ServletsPaciente extends HttpServlet {
             }
         } else if (accion.equals("modificar")) {
             if (!dni.isEmpty()) {
-                control.modificarPaciente(nombre, apellido, dni, sexo, edad, direccion, obra, tutor, contacto);
+                control.modificarPaciente(nombre, apellido,dni, edad, direccion, obra, tutor, contacto);
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");

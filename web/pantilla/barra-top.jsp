@@ -1,3 +1,4 @@
+<%@page import="Logica.Clinica"%>
 <div id="wrapper">
 <!-- navbar top -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">

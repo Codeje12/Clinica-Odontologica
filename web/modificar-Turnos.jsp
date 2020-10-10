@@ -1,7 +1,5 @@
-<%@page import="Logica.Paciente"%>
-<%@page import="Logica.Odontologo"%>
 <%@page import="java.util.List"%>
-<%@page import="Logica.Turno"%>
+<%@page import="Logica.Paciente"%>
 <%@include file="pantilla/documento-apertura.jsp"%>
 <jsp:include page="pantilla/barra-top.jsp"/> 
 <jsp:include page="pantilla/barra-lado.jsp"/> 
@@ -18,7 +16,7 @@
     <div class="col-md-4">
         <form action="ServletsTruno" method="POST">
             <select name="accion">
-                <option value="crear" class="select-login centrar" >Agregar</option>
+                <option value="modificar" class="select-login centrar" >Modificar</option>
             </select>
             <p><select class="select-login text-center" name="dia">
                     <option value="error">Seleccionar Dia</option>
@@ -54,19 +52,8 @@
             <p class="col-md-4"></p>
             <p class="col-md-4"></p>
             <p class="text-center">
-                <select class="select-login text-center" name="odontologo">
-                <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
-                     List<Odontologo> listaOdontologo = ctr.traerOdontologo();
-                     
-                     for (Odontologo odon : listaOdontologo){ %>       
-                    <option value="<%=odon.getId()%>"><%=odon.getNombre()%> </option>
-                 <% } %>
-                
-                </select>
-            </p>
-            <p class="text-center">
                 <select class="select-login text-center" name="paciente">
-                <% 
+                <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
                      List<Paciente> listaPaciente = ctr.traerPaciente();
                      
                      for (Paciente pac : listaPaciente){ %>       
