@@ -8,14 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-
 @Entity
-public class Secretaria extends Persona{
-    
+public class Secretaria extends Persona {
+
     @Basic
     String Horario;
     @OneToOne
-     Usuario usuario;
+    Usuario usuario;
 
     public Secretaria() {
     }
@@ -34,7 +33,6 @@ public class Secretaria extends Persona{
         this.id = id;
     }
 
-
     public String getHorario() {
         return Horario;
     }
@@ -42,6 +40,7 @@ public class Secretaria extends Persona{
     public void setHorario(String Horario) {
         this.Horario = Horario;
     }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -88,6 +87,37 @@ public class Secretaria extends Persona{
     @Override
     public void setEdad(String edad) {
         this.edad = edad;
+    }
+
+    public Secretaria crear(String nombre, String apellido, String dni, String hora) {
+        try {
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "")
+                    || (dni == null || dni == "") || (edad == null || edad == "")) {
+                System.out.println("no");
+            } else {
+                this.setNombre(nombre);
+                this.setApellido(apellido);
+                this.setDni(dni);
+                this.setHorario(hora);
+                return this;
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+            return null;
+        }
+        return this;
+    }
+
+    public void modificar(String nombre, String apellido, String dni, String hora) {
+        try {
+            this.setNombre(nombre);
+            this.setApellido(apellido);
+            this.setDni(dni);
+            this.setHorario(hora);
+
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
     }
 
 }

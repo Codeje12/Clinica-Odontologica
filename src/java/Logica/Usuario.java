@@ -16,6 +16,7 @@ public class Usuario implements Serializable {
     @Basic
     private String usuario;
     private String pass;
+    
 
     public Usuario() {
     }

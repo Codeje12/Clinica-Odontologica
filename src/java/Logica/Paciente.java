@@ -127,5 +127,44 @@ public class Paciente extends Persona  {
     public void setEdad(String edad) {
         this.edad = edad;
     }
+    
+    public Paciente crear(String nombre, String apellido, String dni, String sexo, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
+        try {
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "")
+                    || (dni == null || dni == "") || (edad == null || edad == "")) {
+                System.out.println("no");
+            } else {
+                this.setNombre(nombre);
+                this.setApellido(apellido);
+                this.setDni(dni);
+                this.setSexo(sexo);
+                this.setEdad(edad);
+                this.setDireccion(direccion);
+                this.setObraSocial(obra);
+                this.setTutor(tutor);
+                this.setContactoTutor(contacto);
+              
+            }
 
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+        return this;
+    }
+    
+    public void modificar(String nombre, String apellido, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
+        try {
+            this.setNombre(nombre);
+            this.setApellido(apellido);
+            this.setEdad(edad);
+            this.setDireccion(direccion);
+            this.setObraSocial(obra);
+            this.setTutor(tutor);
+            this.setContactoTutor(contacto);
+            
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
+    }
+    
 }

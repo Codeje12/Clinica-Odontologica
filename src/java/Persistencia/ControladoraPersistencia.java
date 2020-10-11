@@ -3,6 +3,7 @@ package Persistencia;
 import Logica.Odontologo;
 import static Logica.Odontologo_.usuario;
 import Logica.Paciente;
+import Logica.Secretaria;
 import Logica.Turno;
 import Logica.Usuario;
 import Persistencia.exceptions.NonexistentEntityException;
@@ -48,8 +49,6 @@ public class ControladoraPersistencia {
         }
     }
 
-    
-
     public void eliminarPaciente(String dni) {
         List<Paciente> listaPaciente = this.pacienteJpa.findPacienteEntities();
         for (Paciente pac : listaPaciente) {
@@ -63,11 +62,11 @@ public class ControladoraPersistencia {
             }
         }
     }
-    
+
     public void eliminarTurno(int paciente) {
         List<Turno> listaTurno = this.turnoJpa.findTurnoEntities();
         for (Turno tur : listaTurno) {
-            if (tur.getPacient().getId() == paciente ) {
+            if (tur.getPacient().getId() == paciente) {
                 try {
                     this.pacienteJpa.destroy(tur.getId_Turno());
                     break;
@@ -77,6 +76,7 @@ public class ControladoraPersistencia {
             }
         }
     }
+
     public void eliminarOdontologo(String dni) {
         List<Odontologo> listaOdontologo = this.odontologoJpa.findOdontologoEntities();
         for (Odontologo odo : listaOdontologo) {
@@ -111,7 +111,7 @@ public class ControladoraPersistencia {
         }
 
     }
-    
+
     public void modificarTurno(Turno turno) {
         try {
             this.turnoJpa.edit(turno);
@@ -120,7 +120,7 @@ public class ControladoraPersistencia {
         }
 
     }
-    
+
     public void modificar(Odontologo odontologo) {
         try {
             this.odontologoJpa.edit(odontologo);
@@ -135,6 +135,7 @@ public class ControladoraPersistencia {
         listaPaciente = this.pacienteJpa.findPacienteEntities();
         return listaPaciente;
     }
+
     public Paciente traerPacienteUnico(String dni) {
         Paciente paciente = null;
         List<Paciente> listaPaciente;
@@ -147,12 +148,13 @@ public class ControladoraPersistencia {
         }
         return paciente;
     }
+
     public List<Turno> traerTurno() {
         List<Turno> listaTurno;
         listaTurno = this.turnoJpa.findTurnoEntities();
         return listaTurno;
     }
-    
+
     public Turno traerTurnoUnico(int id) {
         Turno turn = null;
         List<Turno> listaTurno;
@@ -172,7 +174,6 @@ public class ControladoraPersistencia {
         listaOdontologo = this.odontologoJpa.findOdontologoEntities();
         return listaOdontologo;
     }
-    
 
     public Odontologo traerOdontologoUnico(int id) {
         Odontologo odon2 = null;
@@ -185,6 +186,7 @@ public class ControladoraPersistencia {
         }
         return odon2;
     }
+
     public Odontologo traerOdontologoUnico(String dni) {
         Odontologo odontologo = null;
         List<Odontologo> listaOdontologo;
@@ -197,6 +199,7 @@ public class ControladoraPersistencia {
         }
         return odontologo;
     }
+
     public Paciente traerPacienteUnico(int id) {
         Paciente pac2 = null;
         List<Paciente> listaPaciente;
@@ -209,6 +212,52 @@ public class ControladoraPersistencia {
         return pac2;
     }
 
-    
+    public void crearSecretaria(Secretaria secre) {
+        try {
+            secretariaJpa.create(secre);
+        } catch (Exception ex) {
+            System.out.println("Error" + ex);
+        }
+    }
+     public List<Secretaria> traerSecretaria() {
+        List<Secretaria> listaSecretaria;
+        listaSecretaria = this.secretariaJpa.findSecretariaEntities();
+        return listaSecretaria;
+    }
+
+    public Secretaria traerSecretariaUnico(String dni) {
+        Secretaria secretaria = null;
+        List<Secretaria> listaSecretaria;
+        listaSecretaria = traerSecretaria();
+        for (Secretaria secre : listaSecretaria) {
+            if (secre.getDni().equals(dni)) {
+                secretaria = secre;
+                return secre;
+            }
+        }
+        return secretaria;
+    }
+
+    public void modificarSecretaria(Secretaria secre) {
+        try {
+            this.secretariaJpa.edit(secre);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void eliminarSecretaria(String dni) {
+        List<Secretaria> listaSecretaria = this.secretariaJpa.findSecretariaEntities();
+        for (Secretaria secre : listaSecretaria) {
+            if (secre.getDni().equals(dni)) {
+                try {
+                    this.odontologoJpa.destroy(secre.getId());
+                    break;
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 
 }

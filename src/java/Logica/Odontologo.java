@@ -103,5 +103,41 @@ public class Odontologo extends Persona{
     public void setEdad(String edad) {
         this.edad = edad;
     }
+    
+    public Odontologo crear(String nombre, String apellido, String dni, String edad, String especialidad, String horarioInicioTrabajo, String horarioFinTrabajo) {
+
+        try {
+            if ((nombre == null || nombre == "") || (apellido == null || apellido == "")
+                    || (dni == null || dni == "") || (edad == null || edad == "")) {
+                System.out.println("Error");
+            } else {
+                this.setNombre(nombre);
+                this.setApellido(apellido);
+                this.setDni(dni);
+                this.setEdad(edad);
+                this.setEspecialidad(especialidad);
+                this.setHorarioInicioTrabajo(horarioInicioTrabajo);
+                this.setHorarioFinTrabajo(horarioFinTrabajo);
+                return this;
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+            return null;
+        }
+        return this;
+    }
+    
+    public void modificar(String nombre, String apellido, String dni, String edad, String horarioInicioTrabajo, String horarioFinTrabajo) {
+        try {
+            this.setNombre(nombre);
+            this.setApellido(apellido);
+            this.setEdad(edad);
+            this.setHorarioInicioTrabajo(horarioInicioTrabajo);
+            this.setHorarioFinTrabajo(horarioFinTrabajo);
+        } catch (Exception ex) {
+            System.out.println("Error " + ex);
+        }
+    }
 
 }

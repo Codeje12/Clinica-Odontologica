@@ -105,4 +105,21 @@ public class Turno implements Serializable {
     public void realizarTurno(Odontologo odont, Paciente pac) {
 
     }
+
+    public Turno crear(String dia, String hora, String tratamiento, String diagnostico, double costo) {
+        try {
+            this.setDia(dia);
+            this.setHora(hora);
+            this.setTratamiento(tratamiento);
+            this.setDiagnostico(diagnostico);
+            this.setCosto(costo);
+
+ 
+            return this;
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+            return null;
+        }
+    
+    }
 }

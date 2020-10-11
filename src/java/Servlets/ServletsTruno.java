@@ -48,14 +48,14 @@ public class ServletsTruno extends HttpServlet {
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
         if (accion.equals("crear")) {
-            if (control.crearTurno(dia, hora, tratamiento, diagnostico, costo, odontologo,paciente)) {
+            if (control.crear(dia, hora, tratamiento, diagnostico, costo, odontologo,paciente)) {
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
         } else if (accion.equals("modificar")) {
             if (!dia.isEmpty() || !hora.isEmpty()) {
-                control.modificarTurno(dia, hora, tratamiento, diagnostico, costo,odontologo, paciente);
+                control.modificar(dia, hora, tratamiento, diagnostico, costo,odontologo, paciente);
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");

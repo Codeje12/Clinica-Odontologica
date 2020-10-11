@@ -41,14 +41,14 @@ public class ServletsOdontologo extends HttpServlet {
 
         Clinica control = new Clinica();
         if (accion.equals("crear")) {
-            if (control.crearOdontologo(nombre, apellido, dni, edad, especialidad, horarioInicioTrabajo, horarioFinTrabajo)) {
+            if (control.crear(nombre, apellido, dni, edad, especialidad, horarioInicioTrabajo, horarioFinTrabajo)) {
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
         } else if (accion.equals("modificar")) {
             if (!dni.isEmpty()) {
-                control.modificarOdontologo(nombre, apellido, dni, edad, horarioInicioTrabajo, horarioFinTrabajo);
+                control.modificar(nombre, apellido, dni, edad, horarioInicioTrabajo, horarioFinTrabajo);
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
