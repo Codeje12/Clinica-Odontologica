@@ -10,21 +10,20 @@
 <!-- Interfaz para el eliminado o modificado del paciente-->
 <div class="text-center">  
     <h1>Elimina Turno</h1>
-    <h3>Digite el dni del Paciente para eliminarlo</h3>
 </div>
 
 <div class="centrar text-center">
     <div>
         <form action="ServletsTruno" method="POST">            
-            <p><select class="select-login text-center" name="accion">
-                    <option value="eliminar">Eliminar</option>
+            <p><select class="input-password select-login text-center" style=" background-color:black; color:white" name="accion">
+                    <option value="eliminar">Digite el dni del Paciente para eliminarlo</option>
                 </select></p>
-            <p><select class="select-login text-center" name="turnos">
+            <p><select class="select-login text-center" name="turnoId">
                     <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
                         List<Turno> listaTurno = ctr.traerTurnos();
 
                         for (Turno tur : listaTurno) {%>       
-                    <option value="<%=tur.getPacient().getId()%>"><%=tur.getPacient().getNombre()%> </option>
+                    <option value="<%=tur.getId_Turno()%>"><%=tur.getPacient().getNombre()%> </option>
                     <% }%>
             </select></p>
             <input type="submit" class="btn-ingreso" value="Ejecutar">

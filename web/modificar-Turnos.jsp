@@ -1,3 +1,4 @@
+<%@page import="Logica.Turno"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.Paciente"%>
 <%@include file="pantilla/documento-apertura.jsp"%>
@@ -7,7 +8,6 @@
 <br>
 <div class="text-center">  
     <h1>Registro de turno</h1>
-    <h3>Datos del turno</h3>
 </div>
 
 <div class="centrar text-center">
@@ -15,11 +15,11 @@
     </div>
     <div class="col-md-4">
         <form action="ServletsTruno" method="POST">
-            <select name="accion">
-                <option value="modificar" class="select-login centrar" >Modificar</option>
+            <select class="input-password select-login text-center" style=" background-color:black; color:white" name="accion">
+                <option value="modificar" class="select-login centrar" >Realizar cambio del turno</option>
             </select>
+            <label>Seleccionar dia de atencion</label>
             <p><select class="select-login text-center" name="dia">
-                    <option value="error">Seleccionar Dia</option>
                     <option value="lunes">Lunes</option>
                     <option value="martes" >Martes</option>
                     <option value="miercoles" >Miercoles</option>
@@ -47,19 +47,17 @@
                     <option value="19" >19</option>
                     <option value="20" >20</option>
                 </select>
-           
+
             </p>
             <p class="col-md-4"></p>
             <p class="col-md-4"></p>
             <p class="text-center">
-                <select class="select-login text-center" name="paciente">
-                <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
-                     List<Paciente> listaPaciente = ctr.traerPaciente();
-                     
-                     for (Paciente pac : listaPaciente){ %>       
-                    <option value="<%=pac.getId()%>"><%=pac.getNombre()%> </option>
-                 <% } %>
-                
+                <select class="select-login text-center" name="turnoId">
+                    <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
+                    List<Turno> listaTurno = ctr.traerTurnos();
+                    for (Turno tur : listaTurno) {%> 
+                    <option value="<%=tur.getId_Turno()%>"><%=tur.getPacient().getNombre()%> </option>
+                    <%}%>
                 </select>
             </p>
             <p class="col-md-4">

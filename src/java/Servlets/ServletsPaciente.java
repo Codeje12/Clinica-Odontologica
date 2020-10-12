@@ -30,6 +30,7 @@ public class ServletsPaciente extends HttpServlet {
         boolean obra = Boolean.parseBoolean(request.getParameter("obra"));
         boolean tutor = Boolean.parseBoolean(request.getParameter("tutor"));
         String contacto = request.getParameter("contacto");
+        String idPaciente = request.getParameter("idPaciente");
 
         String accion = request.getParameter("accion");
 
@@ -44,6 +45,7 @@ public class ServletsPaciente extends HttpServlet {
         request.getSession().setAttribute("obra", obra);
         request.getSession().setAttribute("tutor", tutor);
         request.getSession().setAttribute("contacto", contacto);
+        request.getSession().setAttribute("idPaciente", idPaciente);
         request.getSession().setAttribute("accion", accion);
 
         Clinica control = new Clinica();
@@ -61,16 +63,16 @@ public class ServletsPaciente extends HttpServlet {
                 response.sendRedirect("carga-Error.jsp");
             }
         } else if (accion.equals("modificar")) {
-            if (!dni.isEmpty()) {
-                control.modificar(nombre, apellido, dni, edad, direccion, obra, tutor, contacto);
+            if (!idPaciente.isEmpty()) {
+                control.modificar(nombre, apellido, dni, edad, direccion, obra, tutor, contacto,Integer.parseInt(idPaciente));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
 
         } else if (accion.equals("eliminar")) {
-            if (!dni.isEmpty()) {
-                control.eliminarPaciente(dni);
+            if (!idPaciente.isEmpty()) {
+                control.eliminarPaciente(Integer.parseInt(idPaciente));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");

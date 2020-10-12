@@ -22,14 +22,15 @@ public class Clinica {
         return valor;
     }
 
-    public void modificar(String nombre, String apellido, String dni, String edad, String direccion, boolean obra, boolean tutor, String contacto) {
-        Paciente pac = persistencia.traerPacienteUnico(dni);
+    public void modificar(String nombre, String apellido, String dni, String edad, String direccion, boolean obra, boolean tutor, String contacto, int idPaciente) {
+        Paciente pac = new Paciente();
+        pac = persistencia.traerPacienteUnico(idPaciente);
         pac.modificar(nombre, apellido, edad, direccion, obra, tutor, contacto);
         this.persistencia.modificarPaciente(pac);
     }
 
-    public void eliminarPaciente(String dni) {
-        this.persistencia.eliminarPaciente(dni);
+    public void eliminarPaciente(int id) {
+        this.persistencia.eliminarPaciente(id);
     }
 
     public List<Paciente> traerPaciente() {
@@ -96,8 +97,8 @@ public class Clinica {
         return valor;
     }
 
-    public void modificar(String dia, String hora, String tratamiento, String diagnostico, double costo, int odontologo, int paciente) {
-        Turno tur = persistencia.traerTurnoUnico(paciente);
+    public void modificar(String dia, String hora, String tratamiento, String diagnostico, double costo, int turnoId) {
+        Turno tur = persistencia.traerTurnoUnico(turnoId);
 
         try {
             tur.setDia(dia);
@@ -118,8 +119,8 @@ public class Clinica {
 
     String pagina;
 
-    public void eliminarTurno(int paciente) {
-        this.persistencia.eliminarTurno(paciente);
+    public void eliminarTurno(int turnoId) {
+        this.persistencia.eliminarTurno(turnoId);
     }
 
     /**
@@ -143,14 +144,5 @@ public class Clinica {
 
     public void eliminarSecretaria(String dni) {
         this.persistencia.eliminarSecretaria(dni);
-    }
-
-    public String paginaEs( HttpSession sesion) {
-        if (sesion.getAttribute("usuario").equals("secretaria")) {
-            pagina ="carga-Secretarias.jsp";
-        }else{
-            pagina ="pagina-Proceso.jsp";
-        }
-        return pagina;
-    }
+    }  
 }

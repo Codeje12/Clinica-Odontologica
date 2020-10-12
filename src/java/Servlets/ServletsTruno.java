@@ -1,7 +1,6 @@
 package Servlets;
 
 import Logica.Clinica;
-import Logica.Odontologo;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +25,10 @@ public class ServletsTruno extends HttpServlet {
         String hora = request.getParameter("hora");
         String tratamiento = request.getParameter("tratamiento");
         String diagnostico = request.getParameter("diagnostico");
-        double costo = Double.parseDouble(request.getParameter("costo"));
-        int odontologo = Integer.parseInt(request.getParameter("odontologo"));
-        int paciente = Integer.parseInt(request.getParameter("paciente"));
+        String costo = request.getParameter("costo");
+        String odontologo = request.getParameter("odontologo");
+        String paciente =request.getParameter("paciente");
+        String turnoId = request.getParameter("turnoId");
 
         String accion = request.getParameter("accion");
         
@@ -41,6 +41,7 @@ public class ServletsTruno extends HttpServlet {
         request.getSession().setAttribute("costo", costo);
         request.getSession().setAttribute("odontologo", odontologo);
         request.getSession().setAttribute("paciente", paciente);
+        request.getSession().setAttribute("turnoId", turnoId);
         request.getSession().setAttribute("accion", accion);
         
         Clinica control = new Clinica();
@@ -48,22 +49,25 @@ public class ServletsTruno extends HttpServlet {
         //Hay que referenciarlo con la clase controladora, intanciar un objeto del mismo para acceder a lso atributos
         // de la misma, en  donde estaran los abml del JPA
         if (accion.equals("crear")) {
-            if (control.crear(dia, hora, tratamiento, diagnostico, costo, odontologo,paciente)) {
+            if (control.crear(dia, hora, tratamiento, diagnostico, Double.parseDouble(costo), Integer.parseInt(odontologo),  Integer.parseInt(paciente))) {
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
+            
+            
         } else if (accion.equals("modificar")) {
             if (!dia.isEmpty() || !hora.isEmpty()) {
-                control.modificar(dia, hora, tratamiento, diagnostico, costo,odontologo, paciente);
+                control.modificar(dia, hora, tratamiento, diagnostico, Double.parseDouble(costo), Integer.parseInt(turnoId));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
 
+            
         } else if (accion.equals("eliminar")) {
-            if (!dia.isEmpty()) {
-                control.eliminarTurno(paciente);
+            if (!turnoId.isEmpty()) {
+                control.eliminarTurno(Integer.parseInt(turnoId));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");

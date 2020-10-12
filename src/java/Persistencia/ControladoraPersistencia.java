@@ -49,10 +49,10 @@ public class ControladoraPersistencia {
         }
     }
 
-    public void eliminarPaciente(String dni) {
+    public void eliminarPaciente(int id) {
         List<Paciente> listaPaciente = this.pacienteJpa.findPacienteEntities();
         for (Paciente pac : listaPaciente) {
-            if (pac.getDni().equals(dni)) {
+            if (pac.getId()==id) {
                 try {
                     this.pacienteJpa.destroy(pac.getId());
                     break;
@@ -63,12 +63,12 @@ public class ControladoraPersistencia {
         }
     }
 
-    public void eliminarTurno(int paciente) {
+    public void eliminarTurno(int turnoId) {
         List<Turno> listaTurno = this.turnoJpa.findTurnoEntities();
         for (Turno tur : listaTurno) {
-            if (tur.getPacient().getId() == paciente) {
+            if (tur.getId_Turno() == turnoId) {
                 try {
-                    this.pacienteJpa.destroy(tur.getId_Turno());
+                    this.turnoJpa.destroy(tur.getId_Turno());
                     break;
                 } catch (NonexistentEntityException ex) {
                     Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,14 +136,25 @@ public class ControladoraPersistencia {
         return listaPaciente;
     }
 
-    public Paciente traerPacienteUnico(String dni) {
+    public Paciente traerPacienteUnico(int id) {
+        Paciente pac2 = null;
+        List<Paciente> listaPaciente;
+        listaPaciente = traerPaciente();
+        for (Paciente pac : listaPaciente) {
+            if (pac.getId() == id) {
+                pac2 = pac;
+            }
+        }
+        return pac2;
+    }
+    public Paciente traerPacienteUnicoDni(String dni) {
         Paciente paciente = null;
         List<Paciente> listaPaciente;
         listaPaciente = traerPaciente();
         for (Paciente pac : listaPaciente) {
             if (pac.getDni().equals(dni)) {
                 paciente = pac;
-                return pac;
+                return paciente;
             }
         }
         return paciente;
@@ -159,9 +170,8 @@ public class ControladoraPersistencia {
         Turno turn = null;
         List<Turno> listaTurno;
         listaTurno = traerTurno();
-        Paciente pac = traerPacienteUnico(id);
         for (Turno tur : listaTurno) {
-            if (tur.getPacient().getId() == pac.getId()) {
+            if (tur.getId_Turno() == id) {
                 turn = tur;
                 return turn;
             }
@@ -200,17 +210,7 @@ public class ControladoraPersistencia {
         return odontologo;
     }
 
-    public Paciente traerPacienteUnico(int id) {
-        Paciente pac2 = null;
-        List<Paciente> listaPaciente;
-        listaPaciente = traerPaciente();
-        for (Paciente pac : listaPaciente) {
-            if (pac.getId() == id) {
-                pac2 = pac;
-            }
-        }
-        return pac2;
-    }
+    
 
     public void crearSecretaria(Secretaria secre) {
         try {

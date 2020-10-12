@@ -5,7 +5,6 @@
 <br>
 <div class="text-center">  
     <h1>Modificar Odontologo</h1>
-    <h3>Datos del Odontologo</h3>
 </div>
 
 <div class="centrar text-center">
@@ -13,8 +12,8 @@
     </div>
     <div  class="col-md-4">
         <form action="ServletsOdontologo" method="POST">
-            <select name="accion">
-                <option value="modificar">Modificar</option>
+            <select class="input-password select-login text-center" style=" background-color:black; color:white" name="accion">
+                <option value="modificar">Modificar datos del Odontologo</option>
             </select>
             <p><input class="input-password text-center" type="text" name="nombre" placeholder="Nombre " required></p>
             <p><input class="input-password text-center" type="text" name="apellido" placeholder="Apellido" required></p>
