@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a href="pagina-Proceso.jsp"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
+                <a href="pagina-Odontologo.jsp"><i class="fa fa-edit fa-fw"></i>Odontologos</a>
             </li>
         </ul>
     </div>

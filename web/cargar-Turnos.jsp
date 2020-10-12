@@ -32,13 +32,24 @@
                 <select class="select-login text-center" name="odontologo">
                     <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
                         List<Odontologo> listaOdontologo = ctr.traerOdontologo();
-
-                        for (Odontologo odon : listaOdontologo) {%>       
-                    <option value="<%=odon.getId()%>"><%=odon.getNombre()%> </option>
+                        Odontologo o = new Odontologo();
+                        
+                        for (Odontologo odon : listaOdontologo) { 
+                            o.setHorarioInicioTrabajo(odon.getHorarioinicioTrabajo());
+                            o.setHorarioFinTrabajo(odon.getHorarioFinTrabajo());
+                            
+                        %>       
+                        <option value="<%=odon.getId()%>"><%=odon.getNombre()%> </option>
                     <% } %>
-
                 </select>
             </p>
+            <p><label class="label-primary">Seleccionar Hora</label></p>
+            <p><select class="select-login text-center" name="hora">
+                <%
+                       for(int i=7;i<21;i++){%>
+                    <option value="<%=i%>" ><%=i%></option>
+                <% } %>
+                </select></p>
             <p><label class="label-primary">Seleccionar Paciente</label></p>
             <p class="text-center">
                 <select class="select-login text-center" name="paciente">
@@ -51,23 +62,7 @@
 
                 </select>
             </p>
-            <p><label class="label-primary">Seleccionar Hora</label></p>
-            <select class="select-login text-center" name="hora">
-                <option value="7" >7</option>
-                <option value="8" >8</option>
-                <option value="9" >9</option>
-                <option value="10" >10</option>
-                <option value="11" >11</option>
-                <option value="12" >12</option>
-                <option value="13">13</option>
-                <option value="14" >14</option>
-                <option value="15" >15</option>
-                <option value="16" >16</option>
-                <option value="17" >17</option>
-                <option value="18" >18</option>
-                <option value="19" >19</option>
-                <option value="20" >20</option>
-            </select>
+            
             <p class="col-md-4">
             </p>
             <p><textarea class="input-password text-center" name="diagnostico" placeholder="Escriba el diagnostico del paciente" ></textarea></p>      

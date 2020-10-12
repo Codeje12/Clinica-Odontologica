@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 public class Clinica {
-
     private List<Usuario> listUsuario;
     ControladoraPersistencia persistencia = new ControladoraPersistencia();
 
@@ -56,8 +55,8 @@ public class Clinica {
         this.persistencia.modificar(odo);
     }
 
-    public void eliminarOdontologo(String dni) {
-        this.persistencia.eliminarOdontologo(dni);
+    public void eliminarOdontologo(int idOdontologo) {
+        this.persistencia.eliminarOdontologo(idOdontologo);
     }
 
     public List<Odontologo> traerOdontologo() {

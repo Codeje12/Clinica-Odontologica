@@ -28,6 +28,7 @@ public class ServletsOdontologo extends HttpServlet {
         String especialidad = request.getParameter("especialidad");
         String horarioInicioTrabajo = request.getParameter("horarioInicioTrabajo");
         String horarioFinTrabajo = request.getParameter("horarioFinTrabajo");
+        String idOdontologo = request.getParameter("idOdontologo");
         String accion = request.getParameter("accion");
         //Response = Respuesta  /  Request = Consulta
         //Hago una solicitud de la session actual e introduciomos los atributos por parametros
@@ -55,8 +56,8 @@ public class ServletsOdontologo extends HttpServlet {
             }
 
         } else if (accion.equals("eliminar")) {
-            if (!dni.isEmpty()) {
-                control.eliminarOdontologo(dni);
+            if (!idOdontologo.isEmpty()) {
+                control.eliminarOdontologo(Integer.parseInt(idOdontologo));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {
                 response.sendRedirect("carga-Error.jsp");

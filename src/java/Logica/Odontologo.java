@@ -139,5 +139,5 @@ public class Odontologo extends Persona{
             System.out.println("Error " + ex);
         }
     }
-
+ 
 }

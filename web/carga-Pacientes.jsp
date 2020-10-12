@@ -3,7 +3,7 @@
 <jsp:include page="pantilla/barra-lado.jsp"/> 
 <br>
 <div class="text-center">  
-    <h1>Registro de turno</h1>
+    <h1>Registro de Paciente</h1>
 </div>
 
 <div class="centrar text-center">

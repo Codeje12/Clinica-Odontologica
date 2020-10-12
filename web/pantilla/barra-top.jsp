@@ -21,9 +21,12 @@
                         <i class="fa fa-toggle-down fa-2x"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="carga-Secretarias.jsp">
-                                <i class="fa fa-user fa-fw"></i><%=request.getSession().getAttribute("usuario")%></a>
+                        <li><a href=
+                            <%
+                                if(request.getSession().getAttribute("usuario").equals("secretaria")){
+                            %>"carga-Secretarias.jsp"><%}
+                                else{%> "pagina-Proceso.jsp" <%}%>
+                               <i class="fa fa-user fa-fw"></i><%=request.getSession().getAttribute("usuario")%></a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i>Configuracion</a>
                         </li>

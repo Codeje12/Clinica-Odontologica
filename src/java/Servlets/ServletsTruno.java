@@ -54,8 +54,6 @@ public class ServletsTruno extends HttpServlet {
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
-            
-            
         } else if (accion.equals("modificar")) {
             if (!dia.isEmpty() || !hora.isEmpty()) {
                 control.modificar(dia, hora, tratamiento, diagnostico, Double.parseDouble(costo), Integer.parseInt(turnoId));
@@ -63,10 +61,9 @@ public class ServletsTruno extends HttpServlet {
             } else {
                 response.sendRedirect("carga-Error.jsp");
             }
-
-            
+            response.sendRedirect("carga-Error.jsp");
         } else if (accion.equals("eliminar")) {
-            if (!turnoId.isEmpty()) {
+            if (turnoId != null) {
                 control.eliminarTurno(Integer.parseInt(turnoId));
                 response.sendRedirect("carga-Correcta.jsp");
             } else {

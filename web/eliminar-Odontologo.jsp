@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="Logica.Odontologo"%>
 <%@include file="pantilla/documento-apertura.jsp"%>
 <jsp:include page="pantilla/barra-top.jsp"/> 
 <jsp:include page="pantilla/barra-lado.jsp"/> 
@@ -16,7 +18,14 @@
             <p><select class="input-password select-login text-center" style=" background-color:black; color:white" name="accion">
                     <option value="eliminar">Digite el dni del odontologo para eliminarlo</option>
                 </select></p>
-            <p><input class="input-password text-center" name="dni" placeholder="Digite el dni"></p>
+            <p><select class="select-login text-center" name="idOdontologo">
+                    <% Clinica ctr = (Clinica) sesionActual.getAttribute("ctr");
+                        List<Odontologo> listaOdontologo = ctr.traerOdontologo();
+
+                        for (Odontologo odo : listaOdontologo) {%>       
+                    <option value="<%=odo.getId() %>"><%=odo.getNombre()%> <%=odo.getApellido()%> </option>
+                    <% }%>
+            </select></p>
             <input type="submit" class="btn-ingreso" value="Ejecutar">
         </form>
     </div>

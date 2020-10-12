@@ -77,10 +77,10 @@ public class ControladoraPersistencia {
         }
     }
 
-    public void eliminarOdontologo(String dni) {
+    public void eliminarOdontologo(int idOdontologo) {
         List<Odontologo> listaOdontologo = this.odontologoJpa.findOdontologoEntities();
         for (Odontologo odo : listaOdontologo) {
-            if (odo.getDni().equals(dni)) {
+            if (odo.getId() == idOdontologo) {
                 try {
                     this.odontologoJpa.destroy(odo.getId());
                     break;
